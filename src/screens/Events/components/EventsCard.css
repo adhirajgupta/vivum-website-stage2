@@ -1,0 +1,22 @@
+.cardContainer {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ddd;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.cardTitle {
+  flex: 1;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.cardText {
+  flex: 1;
+}
+
+.arrowButton {
+  margin-left: auto;
+}

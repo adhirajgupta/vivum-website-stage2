@@ -1,0 +1,23 @@
+.root {
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.listItem {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  margin-left: 16px;
+  flex: 1;
+}
+
+.responsiveText {
+  font-size: 1rem;
+}
