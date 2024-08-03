@@ -12,7 +12,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import DrawerItem from './components/drawerItem';
 import DrawerAvatar from './components/drawerAvatar';
 
@@ -23,7 +23,8 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-
+  const [coachName, setCoachName] = React.useState('')
+  const navigate = useNavigate()
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -39,9 +40,48 @@ function ResponsiveDrawer(props) {
     }
   };
 
+  async function checkSessionAndFetch() {
+    if ((localStorage.getItem('coachName') || localStorage.getItem("coachName") == "undefined undefined")) {
+      const utoken = localStorage.getItem('utoken');
+      if (utoken) {
+        try {
+          const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+          const data = await response.json();
+          console.log("data - ", data);
+
+          const fullName = data.userdata.fname + " " + data.userdata.lname;
+          setCoachName(fullName);
+          localStorage.setItem("coachName", fullName);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+
+      } else {
+        console.log('No utoken found in localStorage');
+      }
+    } else {
+      console.log("session storage data exectued")
+      setCoachName(localStorage.getItem('coachName'))
+    }
+  }
+
+  React.useEffect(() => {
+    checkSessionAndFetch()
+  }, [])
+
+  const handleLogout = () => {
+    // Clear utoken from localStorage and localStorage
+    localStorage.removeItem('utoken');
+    localStorage.removeItem('coachName');
+
+    // Navigate to the login page
+    navigate('/auth/login');
+  };
+
+
   const drawer = (
     <div>
-      <DrawerAvatar/>
+      <DrawerAvatar name={coachName} handleClick={handleLogout} />
       <Divider />
       <List>
         <DrawerItem
@@ -71,6 +111,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: '#7b0101'
         }}
       >
         <Toolbar>
@@ -124,7 +165,7 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` },  }}
+        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` }, }}
       >
         <Toolbar />
         <Outlet />

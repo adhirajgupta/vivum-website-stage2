@@ -8,6 +8,7 @@ import Title from './Title';
 
 export default function EventComponent({ events, navigate }) {
     const handleRowClick = (event) => {
+
         navigate(`/sport/${event.name}`);
     };
 
@@ -25,7 +26,7 @@ export default function EventComponent({ events, navigate }) {
                 </TableHead>
                 <TableBody>
                     {events && events.map((event) => (
-                        <TableRow key={event.id} hover onClick={()=> handleRowClick(event)} >
+                        <TableRow key={event.id} hover onClick={() => handleRowClick(event)} >
                             <TableCell>{event.day}</TableCell>
                             <TableCell>{event.name}</TableCell>
                             <TableCell>{event.location}</TableCell>

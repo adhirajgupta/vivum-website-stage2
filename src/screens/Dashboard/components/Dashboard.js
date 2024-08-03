@@ -1,4 +1,7 @@
+// Dashboard.js
+
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -7,32 +10,52 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import Deposits from './Deposits';
-import Orders from './Orders';
-import { Avatar } from '@mui/material';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import EventList from './EventList';
+import CopyRight from '../../../global/Copyright';
+import AvatarComponent from './Avatar';
 
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [coachName, setCoachName] = useState('');
+  const [school, setSchool] = useState('');
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  const defaultTheme = createTheme();
+  useEffect(() => {
+    const fetchUserData = async () => {
+      let storedCoachName = localStorage.getItem('coachName');
+      let storedSchool = localStorage.getItem('school');
+
+      if (storedCoachName && storedSchool) {
+        setCoachName(storedCoachName);
+        setSchool(storedSchool);
+      } else {
+        const utoken = localStorage.getItem('utoken');
+        if (utoken) {
+          try {
+            const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+            const data = await response.json();
+            if (data && data.userdata) {
+              const fullName = `${data.userdata.fname} ${data.userdata.lname}`;
+              setCoachName(fullName);
+              setSchool(data.userdata.school);
+              localStorage.setItem('coachName', fullName);
+              localStorage.setItem('school', data.userdata.school);
+            }
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+          }
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
-    <Box sx={{ display: 'flex', color: 'white' }}>
+    <Box sx={{ display: 'flex', }}>
       <Box
         component="main"
         sx={{
@@ -47,7 +70,7 @@ export default function Dashboard() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={7}>
               <Paper
                 sx={{
                   p: 2,
@@ -57,39 +80,48 @@ export default function Dashboard() {
                   height: 240,
                 }}
               >
-                <Avatar style={{ height: '100%', width: '27%' }} />
-                <Box sx={{ ml: 2 }}> {/* Add a margin-left */}
-                  <Typography variant="h1" component="div" sx={{ fontWeight: 'bold',verticalAlign:'top' }}>
-                    Your Name
-                  </Typography>
-                  <Typography variant="h4" color="text.secondary">
-                    Your subtitle text
-                  </Typography>
-                </Box>
+                <AvatarComponent coachName={coachName} school={school} />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                }}
-              >
-                <Deposits />
-              </Paper>
+            <Grid item xs={12} md={4} lg={5}>
+              <Grid container spacing={2}> {/* Add a nested Grid container */}
+                <Grid item xs={12} sm={6}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 240,
+                    }}
+                  >
+                    <Deposits />
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 240,
+                    }}
+                  >
+                    <Deposits />
+                  </Paper>
+                </Grid>
+              </Grid>
             </Grid>
-            {/* Recent Orders */}
+
+            {/* Recent EventList */}
             <Grid item xs={12}>
               <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                <Orders />
+                <EventList />
               </Paper>
             </Grid>
           </Grid>
         </Container>
-        {/* <Copyright sx={{ pt: 4 }} /> */}
+        {/* <CopyRight /> */}
       </Box>
     </Box>
   );
