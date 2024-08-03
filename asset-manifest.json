@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/vivum-website-stage2/static/css/main.5b5c0480.css",
+    "main.js": "/vivum-website-stage2/static/js/main.a62d0508.js",
+    "static/js/453.c41d2d3d.chunk.js": "/vivum-website-stage2/static/js/453.c41d2d3d.chunk.js",
+    "static/media/home-banner-image.png": "/vivum-website-stage2/static/media/home-banner-image.a41849b23e5c36d66717.png",
+    "static/media/about-background-image.png": "/vivum-website-stage2/static/media/about-background-image.d0e45280dd69dec26ee6.png",
+    "static/media/home-banner-background.png": "/vivum-website-stage2/static/media/home-banner-background.585600da7ff85661555e.png",
+    "static/media/Logo.svg": "/vivum-website-stage2/static/media/Logo.56ad59d23ceff242946a01628e79e275.svg",
+    "static/media/logo.svg": "/vivum-website-stage2/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/vivum-website-stage2/index.html",
+    "main.5b5c0480.css.map": "/vivum-website-stage2/static/css/main.5b5c0480.css.map",
+    "main.a62d0508.js.map": "/vivum-website-stage2/static/js/main.a62d0508.js.map",
+    "453.c41d2d3d.chunk.js.map": "/vivum-website-stage2/static/js/453.c41d2d3d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b5c0480.css",
+    "static/js/main.a62d0508.js"
+  ]
+}
