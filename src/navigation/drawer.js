@@ -84,7 +84,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Vivum 24'
+            Vivum 2024
           </Typography>
         </Toolbar>
       </AppBar>

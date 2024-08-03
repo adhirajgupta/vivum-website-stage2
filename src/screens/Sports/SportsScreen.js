@@ -15,6 +15,8 @@ export default function Sports() {
                     return 5;
                 case 'football':
                     return 11;
+                case 'tennis':
+                    return 2;
                 default:
                     return 0;
             }

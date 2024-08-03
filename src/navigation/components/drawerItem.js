@@ -12,7 +12,7 @@ const DrawerItem = ({ text, to, icon, onClick }) => {
     <ListItem disablePadding>
         <ListItemButton onClick={onClick}>
           <ListItemIcon>{icon}</ListItemIcon>
-          <ListItemText primary={text} />
+          <ListItemText primary={text} color='primary'/>
         </ListItemButton>
     </ListItem>
       </Link>

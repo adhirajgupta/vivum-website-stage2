@@ -16,7 +16,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
-
+import { Outlet } from "react-router-dom";
+import '../OverviewScreenStyle.css'
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
@@ -42,6 +43,7 @@ const Navbar = () => {
     },
   ];
   return (
+    <>
     <nav>
       <div className="nav-logo-container">
         <img src={Logo} alt="" />
@@ -80,6 +82,8 @@ const Navbar = () => {
         </Box>
       </Drawer>
     </nav>
+      <Outlet/>
+    </>
   );
 };
 

@@ -93,7 +93,7 @@ const Main = () => {
           <Route path='/events' element={<Events />} errorElement={<ErrorPage />} />
           <Route path='/sport/:id' element={<Sports />} errorElement={<ErrorPage />} />
         </Route>
-        <Route path='/information'  errorElement={<ErrorPage />}>
+        <Route path='/information' element={<Navbar />} errorElement={<ErrorPage />}>
           <Route path='/information/overview' element={<Overview />} errorElement={<ErrorPage />} />
           {/* <Route path='/information/sports' element={<Events />} errorElement={<ErrorPage />} />
           <Route path='/information/culturals' element={<Sports />} errorElement={<ErrorPage />} /> */}

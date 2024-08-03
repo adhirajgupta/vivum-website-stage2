@@ -8,13 +8,12 @@ import {
     Container,
     Paper,
 } from '@mui/material';
-import { useFormik, FieldArray } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './FormStyling.css';
 
 const FormComponent = ({ teamMemberCount }) => {
-
-    const [imgData,setImgData] = useState(null)
+    const [imgData, setImgData] = useState(null);
 
     const formik = useFormik({
         initialValues: {
@@ -31,30 +30,85 @@ const FormComponent = ({ teamMemberCount }) => {
                 )
                 .required('Required'),
         }),
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            console.log('Form Submitted', values);
+            await generateQrCodes(values.teamMembers);
+            await sendFormData(values);
         },
     });
 
-    const generateQrCode = async() => {
-        const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${"aditya"}&lname=${"gupta"}`;
+    // const generateQrCode = async (member) => {
+    //     console.log(member, "member");
+    //     const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
 
-    try {
-      const response = await fetch(endpoint);
-      console.log(response)
-      const data = await response.blob();
-      console.log(data);
-      const imageObjectURL = URL.createObjectURL(data);
-      setImgData(imageObjectURL)
+    //     try {
+    //         const response = await fetch(endpoint);
+    //         console.log(response);
+    //         const data = await response.blob();
+    //         console.log(data);
+    //         const imageObjectURL = URL.createObjectURL(data);
+    //         setImgData(imageObjectURL);
 
-      if (data.success) {
-        // navigate('/dashboard');
-      } else {
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-    }
+    //         if (data.success) {
+    //             // navigate('/dashboard');
+    //         } else {
+    //         }
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     }
+    // };
+
+    const generateQrCodes = async (teamMembers) => {
+        console.log('Generating QR Codes for team members', teamMembers);
+        const promises = teamMembers.map(async (member) => {
+            const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
+            try {
+                const response = await fetch(endpoint);
+                console.log(`Response for ${member.firstName} ${member.lastName}:`, response);
+                const data = await response.blob();
+                console.log(`Blob data for ${member.firstName} ${member.lastName}:`, data);
+                const imageObjectURL = URL.createObjectURL(data);
+                return { ...member, qrCode: imageObjectURL };
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                return { ...member, qrCode: null };
+            }
+        });
+        const results = await Promise.all(promises);
+        console.log('QR Code Results:', results);
+        setImgData(results);
+    };
+
+    const sendFormData = async (formData) => {
+        let utoken = localStorage.getItem('utoken')
+        console.log("utoken",utoken)
+        formData.utoken = utoken
+        const endpoint = 'https://adityaiyer2k7.pythonanywhere.com/userdata/teamchange'; // Replace with your endpoint
+        
+        console.log('Sending form data to endpoint:', endpoint);
+        console.log('Form data:', formData);
+
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+                
+            const data = await response.json();
+            console.log('Response from server:', data);
+
+            if (data.success) {
+                console.log('Form data successfully sent');
+            } else {
+                console.error('Failed to send form data');
+            }
+        } catch (error) {
+            console.error('Error sending form data:', error);
+        }
+    };
 
     return (
         <Container maxWidth="lg">
@@ -71,12 +125,7 @@ const FormComponent = ({ teamMemberCount }) => {
                         <Typography variant="h6">Add Team Members</Typography>
                         <form onSubmit={formik.handleSubmit}>
                             <Grid container spacing={2}>
-
                                 {formik.values.teamMembers.map((member, index) => (
-                                    <>
-                                            {/* <Typography>
-                                                {` Team Member ${index}`}
-                                            </Typography> */}
                                     <React.Fragment key={index}>
                                         <Grid item xs={12} sm={4}>
                                             <TextField
@@ -141,14 +190,13 @@ const FormComponent = ({ teamMemberCount }) => {
                                             />
                                         </Grid>
                                     </React.Fragment>
-                                    </>
                                 ))}
                                 <Grid item xs={12}>
-                                    <Button color="primary" variant="contained" fullWidth type="submit" onClick={()=>generateQrCode()}>
+                                    <Button color="primary" variant="contained" fullWidth type="submit">
                                         Submit
                                     </Button>
                                 </Grid>
-                                <img alt="sampelqr" src={imgData}/>
+                                <img alt="sampleqr" src={imgData} />
                             </Grid>
                         </form>
                     </Box>
