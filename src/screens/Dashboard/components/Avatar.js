@@ -16,8 +16,8 @@ const AvatarComponent = ({ coachName, school }) => {
     <>
       <Avatar
         style={{
-          height: '100%',
-          width: '35%',
+          height: '80%',
+          width: '30%',
           display: 'flex',
           backgroundColor: "#7b0101",
           alignItems: 'center',
@@ -29,10 +29,10 @@ const AvatarComponent = ({ coachName, school }) => {
           sx={{
             fontWeight: 'bold',
             fontSize: {
-              xs: '3rem', // Adjust the font size for small screens
-              sm: '5rem',
-              md: '7rem',
-              lg: '9rem', // Adjust the font size as needed
+              xs: '2rem', // Adjust the font size for small screens
+              sm: '3rem',
+              md: '4rem',
+              lg: '6rem', // Adjust the font size as needed
             },
             fontFamily: 'Roboto, sans-serif', // Default font in create-react-app
             color: '#fff' // Ensures the initials are visible on the background color
@@ -74,7 +74,7 @@ const AvatarComponent = ({ coachName, school }) => {
             textTransform: 'uppercase' // Make the text all caps
           }}
         >
-          {school || 'Your subtitle text'}
+          {school || 'Your school name'}
         </Typography>
       </Box>
     </>

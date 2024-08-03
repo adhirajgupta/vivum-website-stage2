@@ -1,6 +1,5 @@
 {
   "name": "vivum-website-stage2",
-  "homepage": "https://adhirajgupta.github.io/vivum-website-stage2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
