@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import DrawerItem from './components/drawerItem';
 import DrawerAvatar from './components/drawerAvatar';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 const appBarHeight = 64; // Default height of AppBar
@@ -124,9 +125,11 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Vivum 2024
-          </Typography>
+          <Button onClick={()=>navigate('/information/overview')} color='secondary'>
+            <Typography variant="h6" noWrap component="div">
+              Vivum 2024
+            </Typography>
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

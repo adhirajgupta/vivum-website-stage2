@@ -66,7 +66,6 @@ export default function SignInSide() {
       if (data.success) {
         localStorage.setItem('utoken', data?.utoken);
         console.log("data from signinscreen",data)
-        localStorage.setItem('coachName', data?.userdata?.fname  + " " + data?.userdata?.lname);
         navigate('/dashboard');
       } else {
         setError('Authentication failed. Please check your email and password.');
