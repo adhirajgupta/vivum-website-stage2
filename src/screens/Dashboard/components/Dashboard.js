@@ -86,7 +86,7 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={5}>
               <Grid container spacing={2}> {/* Add a nested Grid container */}
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={24} sm={12}>
                   <Paper
                     sx={{
                       p: 2,
@@ -95,10 +95,10 @@ export default function Dashboard() {
                       height: 240,
                     }}
                   >
-                    <Deposits />
+                    <Deposits type={"events"} />
                   </Paper>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                   <Paper
                     sx={{
                       p: 2,
@@ -107,9 +107,9 @@ export default function Dashboard() {
                       height: 240,
                     }}
                   >
-                    <Deposits />
+                    <Deposits type={"time"} />
                   </Paper>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
 

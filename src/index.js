@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './Constants';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { theme } from './Constants';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

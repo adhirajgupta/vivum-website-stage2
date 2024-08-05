@@ -7,10 +7,20 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits() {
+export default function Deposits({ type }) {
+  // const [upcomingEvent, setUpcomingEvent] = React.useState(false)
+
+  // React.useEffect(async() => {
+  //   const utoken = localStorage.getItem('utoken')
+  //   const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+  //   const data = await response.json();
+
+  // }, [])
+
+  const event = type === "events" ? true : false
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
+      <Title>{event ? "Upcoming Events" : ""}</Title>
       <Typography color={"primary"} variant="h4">
         $3,024.00
       </Typography>

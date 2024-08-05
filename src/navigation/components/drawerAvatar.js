@@ -1,12 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Avatar, Toolbar, Button, Typography, Popover } from '@mui/material';
 
 const DrawerAvatar = ({ handleClick, name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [fetchedName, setFetchedName] = useState('')
 
   const handleButtonClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  useEffect(()=>{
+  const fetchUserData = async () => {
+      if (!name) {
+        const utoken = localStorage.getItem('utoken');
+        if (utoken) {
+          try {
+            const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+            const data = await response.json();
+            if (data && data.userdata) {
+              const fullName = `${data.userdata.fname} ${data.userdata.lname}`;
+              setFetchedName(fullName);
+              localStorage.setItem('coachName', fullName);
+            }
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+          }
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -25,7 +49,7 @@ const DrawerAvatar = ({ handleClick, name }) => {
       <Button onClick={handleButtonClick}>
         <Toolbar>
           <Avatar src="https://raw.githubusercontent.com/iamshaunjp/material-ui-tut/lesson-17/public/mario-av.png" style={{ marginRight: 13 }} />
-          <Typography sx={{ flexGrow: 1 }}>{name}</Typography>
+          <Typography sx={{ flexGrow: 1 }}>{name || fetchedName}</Typography>
         </Toolbar>
       </Button>
       <Popover

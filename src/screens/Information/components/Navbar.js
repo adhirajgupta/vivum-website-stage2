@@ -44,45 +44,45 @@ const Navbar = () => {
   ];
   return (
     <>
-    <nav>
-      <div className="nav-logo-container">
-        <img src={Logo} alt="" />
-      </div>
-      <div className="navbar-links-container">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Testimonials</a>
-        <a href="">Contact</a>
-        <a href="">
-          {/* <BsCart2 className="navbar-cart-icon" /> */}
-        </a>
-        <button className="primary-button">Bookings Now</button>
-      </div>
-      <div className="navbar-menu-container">
-        {/* <HiOutlineBars3 onClick={() => setOpenMenu(true)} /> */}
-      </div>
-      <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={() => setOpenMenu(false)}
-          onKeyDown={() => setOpenMenu(false)}
-        >
-          <List>
-            {menuOptions.map((item) => (
-              <ListItem key={item.text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Box>
-      </Drawer>
-    </nav>
-      <Outlet/>
+      <nav>
+        <div className="nav-logo-container">
+          <p>Vivum 2024</p>
+        </div>
+        <div className="navbar-links-container">
+          <a href="">Sports Events</a>
+          <a href="">Our Cause</a>
+          <a href="">Sponsors</a>
+          <a href="">Cultural Events</a>
+          <a href="">
+            {/* <BsCart2 className="navbar-cart-icon" /> */}
+          </a>
+          <button className="primary-button">Login</button>
+        </div>
+        <div className="navbar-menu-container">
+          {/* <HiOutlineBars3 onClick={() => setOpenMenu(true)} /> */}
+        </div>
+        <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
+          <Box
+            sx={{ width: 250 }}
+            role="presentation"
+            onClick={() => setOpenMenu(false)}
+            onKeyDown={() => setOpenMenu(false)}
+          >
+            <List>
+              {menuOptions.map((item) => (
+                <ListItem key={item.text} disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+          </Box>
+        </Drawer>
+      </nav>
+      <Outlet />
     </>
   );
 };

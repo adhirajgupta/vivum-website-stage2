@@ -12,7 +12,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DrawerItem from './components/drawerItem';
 import DrawerAvatar from './components/drawerAvatar';
 import { Button } from '@mui/material';
@@ -25,6 +25,7 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const [coachName, setCoachName] = React.useState('')
+  const pathName = useLocation()
   const navigate = useNavigate()
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -41,8 +42,10 @@ function ResponsiveDrawer(props) {
     }
   };
 
+
+
   async function checkSessionAndFetch() {
-    if ((localStorage.getItem('coachName') || localStorage.getItem("coachName") == "undefined undefined")) {
+    if ((localStorage.getItem('coachName') && localStorage.getItem("coachName") != "undefined undefined")) {
       const utoken = localStorage.getItem('utoken');
       if (utoken) {
         try {
@@ -67,13 +70,19 @@ function ResponsiveDrawer(props) {
   }
 
   React.useEffect(() => {
-    checkSessionAndFetch()
+    console.log(pathName)
+    if (pathName.pathname == "/") {
+      navigate("/dashboard")
+    } else {
+      checkSessionAndFetch()
+    }
   }, [])
 
   const handleLogout = () => {
     // Clear utoken from localStorage and localStorage
     localStorage.removeItem('utoken');
     localStorage.removeItem('coachName');
+    localStorage.removeItem('school')
 
     // Navigate to the login page
     navigate('/auth/login');
@@ -125,7 +134,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Button onClick={()=>navigate('/information/overview')} color='secondary'>
+          <Button onClick={() =>navigate('/information/overview')} color='secondary'>
             <Typography variant="h6" noWrap component="div">
               Vivum 2024
             </Typography>

@@ -12,6 +12,12 @@ export default function EventComponent({ events, navigate }) {
         navigate(`/sport/${event.name}`);
     };
 
+    const getEventKeys = (event) => {
+        const eventKeys = Object.values(event)
+        console.log(eventKeys)
+        return eventKeys
+    }
+
     return (
         <React.Fragment>
             <Title>Events</Title>
@@ -21,16 +27,20 @@ export default function EventComponent({ events, navigate }) {
                         <TableCell>Date</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Location</TableCell>
+                        <TableCell>Time</TableCell>
                         <TableCell>Description</TableCell>
+
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {events && events.map((event) => (
+                    {events && getEventKeys(events).map((event) => (
                         <TableRow key={event.id} hover onClick={() => handleRowClick(event)} >
                             <TableCell>{event.day}</TableCell>
                             <TableCell>{event.name}</TableCell>
                             <TableCell>{event.location}</TableCell>
+                            <TableCell>{event.time}</TableCell>
                             <TableCell>{event.description}</TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>

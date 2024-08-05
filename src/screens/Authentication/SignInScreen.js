@@ -15,31 +15,49 @@ import {
   IconButton,
   InputAdornment,
   Alert,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import CopyRight from '../../global/Copyright';
+import loginScreenImage from '../../images/loginscreenImage.png'; // Import the image
 
-function Copyright(props) {
+function NotificationDialog({ open, onClose }) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    <Dialog open={open} >
+      <DialogTitle>Need Help? </DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          Please check your inbox for your email id and password.
+          <br />
+          Still can't find it? Write to us at &nbsp;
+          <a href="mailto:vivum@tisb.ac.in" style={{ textDecoration: 'underline', color: 'inherit' }}>
+            vivum@tisb.ac.in
+          </a>.
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="primary">
+          Ok
+        </Button>
+       
+      </DialogActions>
+    </Dialog>
   );
 }
-
 
 export default function SignInSide() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -54,6 +72,14 @@ export default function SignInSide() {
     setShowPassword(!showPassword);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const onSubmit = async () => {
     console.log("pressed");
     const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/login?userid=${email}&pwdh=${password}`;
@@ -65,7 +91,7 @@ export default function SignInSide() {
 
       if (data.success) {
         localStorage.setItem('utoken', data?.utoken);
-        console.log("data from signinscreen",data)
+        console.log("data from signinscreen", data)
         navigate('/dashboard');
       } else {
         setError('Authentication failed. Please check your email and password.');
@@ -85,7 +111,7 @@ export default function SignInSide() {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+          backgroundImage: `url(${loginScreenImage})`, // Use the imported image here
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -147,10 +173,7 @@ export default function SignInSide() {
                 ),
               }}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             {error && <Alert severity="error">{error}</Alert>}
             <Button
               type="submit"
@@ -163,20 +186,21 @@ export default function SignInSide() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Button variant="text" onClick={handleClickOpen} style={{ textDecoration: 'underline', textTransform: 'none' }}>
                   Forgot password?
-                </Link>
+                </Button>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Button variant="text" onClick={handleClickOpen} style={{ textDecoration: 'underline', textTransform: 'none' }}>
+                  Don't have an account? Sign up
+                </Button>
               </Grid>
             </Grid>
-            <Copyright sx={{ mt: 5 }} />
+            <CopyRight sx={{ mt: 5 }} />
           </Box>
         </Box>
       </Grid>
+      <NotificationDialog open={open} onClose={() => handleClose()} />
     </Grid>
   );
 }

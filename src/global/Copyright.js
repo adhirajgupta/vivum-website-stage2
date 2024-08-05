@@ -5,10 +5,6 @@ const CopyRight = (props) => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'light'
-            ? theme.palette.grey[100]
-            : theme.palette.grey[900],
         flexGrow: 1,
         padding: 0,
         margin: 0,
@@ -16,8 +12,8 @@ const CopyRight = (props) => {
     >
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Vivum 2024
+        <Link color="inherit" href="https://vivum.tisb.org/#/information/overview">
+          Vivum
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

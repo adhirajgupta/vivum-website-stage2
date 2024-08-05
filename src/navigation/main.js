@@ -20,11 +20,17 @@ import Overview from '../screens/Information/OverviewScreen';
 const isAuthenticated = () => {
   // Add your authentication logic here
   // For example, check if a user token exists in localStorage or context
-  return localStorage.getItem('authToken') !== null;
+
+  return localStorage.getItem('utoken') !== null;
 };
 
 const ProtectedRoute = ({ children }) => {
-  return isAuthenticated() ? children : <Navigate to="/login" />;
+  return isAuthenticated() ? (
+
+children
+  )
+   : 
+  <Navigate to="/auth/login" />;
 };
 
 const ErrorPage = () => {
@@ -35,28 +41,21 @@ const ErrorPage = () => {
   }
 
   return (
-    <Navigate to="/login" />
+    <Navigate to="/auth/login" />
   );
 
 }
 
 
-const Login = () => {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // Your login logic here (e.g., API call)
-    localStorage.setItem('authToken', 'sample_token');
-    navigate('/dashboard');
-  };
-
+const NotFound = () => {
   return (
     <div>
-      <h2>Login</h2>
-      <button onClick={handleLogin}>Login</button>
+      <h2>404 - Page Not Found</h2>
+      <p>The page you are looking for does not exist.</p>
     </div>
   );
 };
+
 
 
 
@@ -84,20 +83,25 @@ const Main = () => {
             </ProtectedRoute>
           }
         /> */}
-        <Route path='/auth' errorElement={<ErrorPage />}>
-          <Route path='/auth/login' element={<SignInSide />} errorElement={<ErrorPage />} />
-          <Route path='/auth/signup' element={<SignUp />} errorElement={<ErrorPage />} />
+        <Route path='/auth' >
+          <Route path='/auth/login' element={<SignInSide />} />
+          <Route path='/auth/signup' element={<SignUp />} />
         </Route>
-        <Route path='/' element={<ResponsiveDrawer />} errorElement={<ErrorPage />}>
-          <Route path='/dashboard' element={<Dashboard />} errorElement={<ErrorPage />} />
-          <Route path='/events' element={<Events />} errorElement={<ErrorPage />} />
-          <Route path='/sport/:id' element={<Sports />} errorElement={<ErrorPage />} />
+        <Route path='/' element={<ProtectedRoute>
+          <ResponsiveDrawer />
+        </ProtectedRoute>
+        } >
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/events' element={<Events />} />
+          <Route path='/sport/:id' element={<Sports />} />
         </Route>
-        <Route path='/information' element={<Navbar />} errorElement={<ErrorPage />}>
-          <Route path='/information/overview' element={<Overview />} errorElement={<ErrorPage />} />
+        <Route path='/information' element={<Navbar />} >
+          <Route path='/information/overview' element={<Overview />} />
           {/* <Route path='/information/sports' element={<Events />} errorElement={<ErrorPage />} />
           <Route path='/information/culturals' element={<Sports />} errorElement={<ErrorPage />} /> */}
         </Route>
+        <Route path="*" element={<NotFound />} /> {/* Add this line */}
+
       </Routes>
     </Router>
   );
