@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, TextField, Button, Grid, Container, Paper } from '@mui/material';
 import { useFormik } from 'formik';
 import './FormStyling.css';
-import { validationSchema } from './formValidationSchema.js';
-import {  generateQrCodes, sendFormData } from './formHelpers.js';
-
-import useFieldValues from './useFieldValues.js';
-import { convertPathName } from '../../../Constants';
+import { validationSchema } from './formValidationSchema';
+import { generateQrCodes, sendFormData } from './formHelpers';
+import useFieldValues from './useFieldValues';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const FormComponent = ({ teamMemberCount, sport }) => {
-    const [imgData, setImgData] = useState(null);
+    const [imgData, setImgData] = useState([]);
 
     const formik = useFormik({
         initialValues: {
@@ -25,6 +25,39 @@ const FormComponent = ({ teamMemberCount, sport }) => {
     });
 
     useFieldValues(formik, sport);
+
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        const imgWidth = 50;
+        const imgHeight = 50;
+        const margin = 20;
+        const startX = 10;
+        let startY = 10;
+
+        doc.text("Team Members QR Codes", startX, startY);
+        startY += margin;
+
+        imgData.forEach((member, index) => {
+            const yPos = startY + (index * (imgHeight + margin));
+
+            if (yPos + imgHeight + margin > doc.internal.pageSize.height) {
+                doc.addPage();
+                startY = 10;
+            }
+
+            doc.text(`Member ${index + 1}`, startX, startY);
+            if (member.qrCode) {
+                const qrImage = new Image();
+                qrImage.src = member.qrCode;
+                doc.addImage(qrImage, 'PNG', startX, startY + 10, imgWidth, imgHeight);
+            }
+            doc.text(`${member.firstName} ${member.lastName}`, startX + imgWidth + 20, startY + 25);
+
+            startY += imgHeight + margin;
+        });
+
+        doc.save("team_members_qr_codes.pdf");
+    };
 
     return (
         <Container maxWidth="lg">
@@ -83,7 +116,18 @@ const FormComponent = ({ teamMemberCount, sport }) => {
                                         Submit
                                     </Button>
                                 </Grid>
-                                {imgData && <img alt="sampleqr" src={imgData} />}
+                                {imgData && imgData.map((img, index) => (
+                                    <Grid key={index} item xs={12}>
+                                        <img alt={`qr_code_${index}`} src={img.qrCode} />
+                                    </Grid>
+                                ))}
+                                {imgData.length > 0 && (
+                                    <Grid item xs={12}>
+                                        <Button color="primary" variant="contained" fullWidth onClick={generatePDF}>
+                                            Download PDF
+                                        </Button>
+                                    </Grid>
+                                )}
                             </Grid>
                         </form>
                     </Box>
@@ -94,4 +138,3 @@ const FormComponent = ({ teamMemberCount, sport }) => {
 };
 
 export default FormComponent;
-    
