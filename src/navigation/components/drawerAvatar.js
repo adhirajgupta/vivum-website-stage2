@@ -15,7 +15,7 @@ const DrawerAvatar = ({ handleClick, name }) => {
         const utoken = localStorage.getItem('utoken');
         if (utoken) {
           try {
-            const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+            const response = await fetch(`https://vivum24.pythonanywhere.com/userdata?utoken=${utoken}`);
             const data = await response.json();
             if (data && data.userdata) {
               const fullName = `${data.userdata.fname} ${data.userdata.lname}`;

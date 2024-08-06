@@ -82,7 +82,7 @@ export default function SignInSide() {
 
   const onSubmit = async () => {
     console.log("pressed");
-    const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/login?userid=${email}&pwdh=${password}`;
+    const endpoint = `https://vivum24.pythonanywhere.com/userdata/login?userid=${email}&pwdh=${password}`;
 
     try {
       const response = await fetch(endpoint);
@@ -141,7 +141,7 @@ export default function SignInSide() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Username"
               name="email"
               autoComplete="email"
               autoFocus

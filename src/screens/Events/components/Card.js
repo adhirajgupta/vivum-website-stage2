@@ -35,7 +35,7 @@ export default function EventComponent({ events, navigate }) {
                 <TableBody>
                     {events && getEventKeys(events).map((event) => (
                         <TableRow key={event.id} hover onClick={() => handleRowClick(event)} >
-                            <TableCell>{event.day}</TableCell>
+                            <TableCell>{event.date}</TableCell>
                             <TableCell>{event.name}</TableCell>
                             <TableCell>{event.location}</TableCell>
                             <TableCell>{event.time}</TableCell>

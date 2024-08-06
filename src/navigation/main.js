@@ -30,7 +30,7 @@ const ProtectedRoute = ({ children }) => {
 children
   )
    : 
-  <Navigate to="/auth/login" />;
+  <Navigate to="/information/overview" />;
 };
 
 const ErrorPage = () => {

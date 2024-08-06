@@ -41,7 +41,7 @@ const getFieldValues = async () => {
     const utoken = localStorage.getItem('utoken');
     if (utoken) {
         try {
-            const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+            const response = await fetch(`https://vivum24.pythonanywhere.com/userdata?utoken=${utoken}`);
             const data = await response.json();
             console.log("data - ", data);
             
@@ -81,7 +81,7 @@ useEffect(() => {
 
     // const generateQrCode = async (member) => {
     //     console.log(member, "member");
-    //     const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
+    //     const endpoint = `https://vivum24.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
 
     //     try {
     //         const response = await fetch(endpoint);
@@ -106,7 +106,7 @@ useEffect(() => {
     const generateQrCodes = async (teamMembers) => {
         console.log('Generating QR Codes for team members', teamMembers);
         const promises = teamMembers.map(async (member) => {
-            const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
+            const endpoint = `https://vivum24.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
             try {
                 const response = await fetch(endpoint);
                 console.log(`Response for ${member.firstName} ${member.lastName}:`, response);
@@ -129,7 +129,7 @@ useEffect(() => {
         console.log("utoken", utoken)
         formData.utoken = utoken
         formData.sport = convertPathName(sport)
-        const endpoint = 'https://adityaiyer2k7.pythonanywhere.com/userdata/teamchange'; // Replace with your endpoint
+        const endpoint = 'https://vivum24.pythonanywhere.com/userdata/teamchange'; // Replace with your endpoint
 
         console.log('Sending form data to endpoint:', endpoint);
         console.log('Form data:', formData);

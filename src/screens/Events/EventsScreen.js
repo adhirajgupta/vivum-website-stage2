@@ -45,7 +45,7 @@ export default function Events() {
       const utoken = localStorage.getItem('utoken');
       if (utoken) {
         try {
-          const response = await fetch(`https://adityaiyer2k7.pythonanywhere.com/userdata?utoken=${utoken}`);
+          const response = await fetch(`https://vivum24.pythonanywhere.com/userdata?utoken=${utoken}`);
           const data = await response.json();
           setEvents(data.userdata.events)
           // data.map(val,index => {

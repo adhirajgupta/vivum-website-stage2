@@ -7,7 +7,7 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits({ type }) {
+export default function Deposits({ events }) {
   // const [upcomingEvent, setUpcomingEvent] = React.useState(false)
 
   // React.useEffect(async() => {
@@ -17,21 +17,43 @@ export default function Deposits({ type }) {
 
   // }, [])
 
-  const event = type === "events" ? true : false
+const findMostUpcomingEvent = (events) => {
+    let upcomingEventName = null;
+    let earliestTime = null;
+
+    for (const key in events) {
+        if (events.hasOwnProperty(key)) {
+          console.log(events[key])
+            const { date, time, name } = events[key];
+            const eventDateTime = new Date(`${date}T${time}`);
+
+            if (!earliestTime || eventDateTime < earliestTime) {
+                earliestTime = eventDateTime;
+                console.log("events key", events[key]);
+                upcomingEventName = name;
+            }
+        }
+    }
+
+    return upcomingEventName;
+};
+
+
+
   return (
     <React.Fragment>
-      <Title>{event ? "Upcoming Events" : ""}</Title>
+      <Title>{ "Upcoming Events"}</Title>
       <Typography color={"primary"} variant="h4">
-        $3,024.00
+        {findMostUpcomingEvent(events) || "TBD"}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        on 15 March, 2019
+         13 August, 2024
       </Typography>
-      <div>
+      {/* <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+          View Event
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

@@ -4,7 +4,7 @@ import { convertPathName } from "../../../Constants";
 export const generateQrCodes = async (teamMembers) => {
     console.log('Generating QR Codes for team members', teamMembers);
     const promises = teamMembers.map(async (member) => {
-        const endpoint = `https://adityaiyer2k7.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
+        const endpoint = `https://vivum24.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
         try {
             const response = await fetch(endpoint);
             console.log(`Response for ${member.firstName} ${member.lastName}:`, response);
@@ -25,7 +25,7 @@ export const sendFormData = async (formData, sport) => {
     console.log("utoken", utoken);
     formData.utoken = utoken;
     formData.sport = convertPathName(sport);
-    const endpoint = 'https://adityaiyer2k7.pythonanywhere.com/userdata/teamchange';
+    const endpoint = 'https://vivum24.pythonanywhere.com/userdata/teamchange';
 
     console.log('Sending form data to endpoint:', endpoint);
     console.log('Form data:', formData);
