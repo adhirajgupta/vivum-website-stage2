@@ -1,42 +1,37 @@
 import { useEffect } from 'react';
 import { convertPathName } from '../../../Constants';
 
-const useFieldValues = (formik, sport) => {
+const useFieldValues = (formik, sport, setDataLoading) => {
     useEffect(() => {
         const getFieldValues = async () => {
+            setDataLoading(true);
             const utoken = localStorage.getItem('utoken');
             if (utoken) {
                 try {
                     const response = await fetch(`https://vivum24.pythonanywhere.com/userdata?utoken=${utoken}`);
                     const data = await response.json();
-                    console.log("data - ", data);
-
                     const event = data.userdata.events[convertPathName(sport)];
                     if (event && event.roster.length !== 0) {
-                        console.log("executed the if condition");
-                        const roster = event.roster;
-
-                        const updatedTeamMembers = roster.map((member) => ({
-                            firstName: member.firstName || " ",
-                            lastName: member.lastName || " ",
-                            dateOfBirth: member.dateOfBirth || " ",
+                        const updatedTeamMembers = event.roster.map(member => ({
+                            firstName: member.firstName || "",
+                            lastName: member.lastName || "",
+                            dateOfBirth: member.dateOfBirth || "",
                         }));
-
-                        formik.setValues({
-                            ...formik.values,
-                            teamMembers: updatedTeamMembers,
+                        updatedTeamMembers.forEach((member, index) => {
+                            formik.setFieldValue(`teamMembers[${index}].firstName`, member.firstName);
+                            formik.setFieldValue(`teamMembers[${index}].lastName`, member.lastName);
+                            formik.setFieldValue(`teamMembers[${index}].dateOfBirth`, member.dateOfBirth);
                         });
-                    } else {
-                        console.log("No roster found for the event.");
                     }
                 } catch (error) {
                     console.error("Failed to fetch - fetch returned error", error);
+                } finally {
+                    setDataLoading(false);
                 }
             }
         };
-
         getFieldValues();
-    }, [formik, sport]);
+    }, []); // Empty dependency array ensures this runs only once when the component mounts
 };
 
 export default useFieldValues;

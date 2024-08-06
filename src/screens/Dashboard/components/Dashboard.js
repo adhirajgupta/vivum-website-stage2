@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [open, setOpen] = useState(true);
   const [coachName, setCoachName] = useState('');
   const [school, setSchool] = useState('');
+  const [event,setEvent] = useState(null)
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -41,6 +42,7 @@ export default function Dashboard() {
               const fullName = `${data.userdata.fname} ${data.userdata.lname}`;
               setCoachName(fullName);
               setSchool(data.userdata.school);
+              setEvent(data.userdata.events)
               localStorage.setItem('coachName', fullName);
               localStorage.setItem('school', data.userdata.school);
             }
@@ -95,7 +97,7 @@ export default function Dashboard() {
                       height: 240,
                     }}
                   >
-                    <Deposits type={"events"} />
+                    <Deposits events={event}/>
                   </Paper>
                 </Grid>
                 {/* <Grid item xs={12} sm={6}>
