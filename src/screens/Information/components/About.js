@@ -13,24 +13,21 @@ const About = () => {
         <img src={AboutBackgroundImage} alt="" />
       </div>
       <div className="about-section-text-container">
-        <p className="primary-subheading">About</p>
+        <p className="primary-subheading">Vivum 2024</p>
         <h1 className="primary-heading">
-          Food Is An Important Part Of A Balanced Diet
+          What is Vivum known for?
         </h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          VIVUM is an entirely student-run and charitable initiative which aims to
+empower, encourage, and motivate students from diverse backgrounds to
+push the envelope and discover something unique across all the
+interdisciplinary events offered.
         </p>
         <p className="primary-text">
-          Non tincidunt magna non et elit. Dolor turpis molestie dui magnis
-          facilisis at fringilla quam.
+          Join us for a two-day inter-school fest
+celebrating achievements on stage, and the field, in the true spirit of
+VIVUM '24.
         </p>
-        <div className="about-buttons-container">
-          <button className="secondary-button">Learn More</button>
-          <button className="watch-video-button">
-            {/* <BsFillPlayCircleFill /> Watch Video */}
-          </button>
-        </div>
       </div>
     </div>
   );
