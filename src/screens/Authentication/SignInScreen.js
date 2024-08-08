@@ -92,7 +92,7 @@ export default function SignInSide() {
       if (data.success) {
         localStorage.setItem('utoken', data?.utoken);
         console.log("data from signinscreen", data)
-        navigate('/dashboard');
+        navigate('/portal/dashboard');
       } else {
         setError('Authentication failed. Please check your email and password.');
       }
