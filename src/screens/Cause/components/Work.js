@@ -6,7 +6,7 @@ const Work = () => {
   const workInfoData = [
     {
       image: Jayadeva,
-      title: "Sri Jayadeva Institute of Cardiovascular Sciences and Research",
+      title: "Sri Jayadeva Institute of Cardio Vascular Sciences and Research",
       text: "A non-profit Hospital providing state-of-the-art care to patients in need.",
     },
     {

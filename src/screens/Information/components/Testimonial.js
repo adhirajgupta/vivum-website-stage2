@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Assets/Vivum Logos/WildcraftLogo.png";
+import Logo from "../Assets/Sponsor Logos/WildcraftLogo.png";
 // import { AiFillStar } from "react-icons/ai";
 
 const Testimonial = () => {

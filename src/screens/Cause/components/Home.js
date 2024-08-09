@@ -15,9 +15,9 @@ const Home = () => {
           <h1 className="primary-heading">
             Why do we do this?
           </h1>
-          <h1 className="secondary-heading">
+          <h2 className="secondary-heading">
             You can support our mission!
-          </h1>
+          </h2>
           <button className="secondary-button">
             Learn How
              {/* <FiArrowRight />{" "} */}
