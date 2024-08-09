@@ -1,6 +1,6 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
-import BannerImage from "../Assets/LION_WHITE.png";
+import BannerImage from "../Assets/Vivum Logos/VIVUM.png";
 import Navbar from "./Navbar";
 // import { FiArrowRight } from "react-icons/fi";
 import '../OverviewScreenStyle.css'; // Ensure this is correctly imported
@@ -15,10 +15,10 @@ const Home = () => {
         </div> */}
         <div className="home-text-section">
           <h1 className="primary-heading">
-            Claim Your Throne!
+            Claim Your Throne
           </h1>
           <p className="primary-text">
-            India's First Student-Led Charity Festival! Vivum 24 is a celebration of sports and the arts, hosted annually by the Grade 12 Students of The International School Bangalore!
+            India's largest and most exciting student-let charity festive! VIVUM '24 is hosted annually by the Grade 12 Students of The International School Bangalore. This event is a thrilling celebration of sports, arts and the power of charity.
           </p>
           <button className="secondary-button">
             Learn More

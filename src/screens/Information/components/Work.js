@@ -8,24 +8,24 @@ const Work = () => {
     {
       image: PickMeals,
       title: "Pick Meals",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
+      text: "Sponsor 1",
     },
     {
       image: ChooseMeals,
       title: "Choose How Often",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
+      text: "Sponsor 2",
     },
     {
       image: DeliveryMeals,
       title: "Fast Deliveries",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+      text: "Sponsor 3",
     },
   ];
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
-        <p className="primary-subheading">Work</p>
-        <h1 className="primary-heading">How It Works</h1>
+        <p className="primary-subheading">The great brands who can make this come true</p>
+        <h1 className="primary-heading">OUR SPONSORS</h1>
         <p className="primary-text">
           Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
           elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.

@@ -1,6 +1,6 @@
 import React from "react";
 import AboutBackground from "../Assets/about-background.png";
-import AboutBackgroundImage from "../Assets/about-background-image.png";
+import AboutBackgroundImage from "../Assets/Vivum Logos/TISB.png";
 // import { BsFillPlayCircleFill } from "react-icons/bs";
 
 const About = () => {
@@ -14,10 +14,10 @@ const About = () => {
       </div>
       <div className="about-section-text-container">
         <p className="primary-subheading">Vivum 2024</p>
-        <h1 className="primary-heading">
+        <h1 className="primary-heading" id="about-section-heading">
           What is Vivum known for?
         </h1>
-        <p className="primary-text">
+        <p className="primary-text" id="about-section-description">
           VIVUM is an entirely student-run and charitable initiative which aims to
 empower, encourage, and motivate students from diverse backgrounds to
 push the envelope and discover something unique across all the
