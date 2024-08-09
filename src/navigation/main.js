@@ -15,6 +15,7 @@ import { Dashboard } from '../screens/Dashboard/DashboardScreen';
 import Sports from '../screens/Sports/SportsScreen';
 import Navbar from '../screens/Information/components/Navbar';
 import Overview from '../screens/Information/OverviewScreen';
+import CauseScreen from '../screens/Cause/CauseScreen';
 
 const isAuthenticated = () => {
   // Add your authentication logic here
@@ -50,6 +51,8 @@ const Main = () => {
         </Route>
         <Route path="/" element={<Navbar />}>
           <Route path="/" element={<Overview />} />
+          <Route path="/ourcause" element={<CauseScreen />} />
+
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

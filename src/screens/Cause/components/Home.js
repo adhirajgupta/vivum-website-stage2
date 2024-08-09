@@ -1,7 +1,6 @@
 import React from "react";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/Vivum Logos/VIVUM.png";
-import Navbar from "./Navbar";
 // import { FiArrowRight } from "react-icons/fi";
 import '../OverviewScreenStyle.css'; // Ensure this is correctly imported
 
@@ -15,18 +14,20 @@ const Home = () => {
         </div> */}
         <div className="home-text-section">
           <h1 className="primary-heading">
-            Claim Your Throne
+            Why do we do this?
           </h1>
-          <p className="primary-text">
-            India's largest and most exciting student-let charity festive! VIVUM '24 is hosted annually by the Grade 12 Students of The International School Bangalore. This event is a thrilling celebration of sports, arts and the power of charity.
-          </p>
+          <h1 className="secondary-heading">
+            You can support our mission!
+          </h1>
           <button className="secondary-button">
-            Learn More
+            Learn How
              {/* <FiArrowRight />{" "} */}
           </button>
         </div>
-        <div className="home-image-section">
-          <img src={BannerImage} alt=""/>
+        <div className="side-text-section">
+          <h2>Since 2019, 65-70% of Indian healthcare expenditure has been out-of-pocket
+instalments. VIVUM ’24 aims to address the challenge of affordability and
+accessibility by bridging the gap between medical aid and the underprivileged.</h2>
         </div>
       </div>
     </div>

@@ -1,35 +1,44 @@
 import React from "react";
-import PickMeals from "../Assets/pick-meals-image.png";
-import ChooseMeals from "../Assets/choose-image.png";
-import DeliveryMeals from "../Assets/delivery-image.png";
-
+import Tata from "../Assets/Sponsor Logos/TataNeu.png";
+import Nivia from "../Assets/Sponsor Logos/Nivia Logo.jpeg";
+import Roposo from "../Assets/Sponsor Logos/Roposo Logo.png";
+import Wildcraft from "../Assets/Sponsor Logos/WildCraft.jpeg";
+import PokerApparel from "../Assets/Sponsor Logos/Poker Apparel.jpeg";
 const Work = () => {
   const workInfoData = [
     {
-      image: PickMeals,
-      title: "Pick Meals",
-      text: "Sponsor 1",
+      image: Tata,
+      title: "Tata-Neu",
+      text: "Tata Neu",
     },
     {
-      image: ChooseMeals,
-      title: "Choose How Often",
-      text: "Sponsor 2",
+      image: Nivia,
+      title: "Nivia",
+      text: "Roposo",
     },
     {
-      image: DeliveryMeals,
-      title: "Fast Deliveries",
-      text: "Sponsor 3",
+      image: Roposo,
+      title: "Roposo",
+      text: "Roposo",
     },
+    {
+      image: Wildcraft,
+      title: "Wildcraft",
+      text: "Wildcraft",
+    }
   ];
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
         <p className="primary-subheading">The great brands who can make this come true</p>
-        <h1 className="primary-heading">OUR SPONSORS</h1>
+        <h1 className="primary-heading">OUR MAIN SPONSORS</h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          For seeing all the companies who made this possible, visit the Sponsor Page
         </p>
+        <button className="secondary-button">
+            Visit Sponsor Page
+             {/* <FiArrowRight />{" "} */}
+          </button>
       </div>
       <div className="work-section-bottom">
         {workInfoData.map((data) => (

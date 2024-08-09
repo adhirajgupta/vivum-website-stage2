@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Assets/Vivum Logos/WildcraftLogo.png";
+import ProfilePic from "../Assets/john-doe-image.png";
 // import { AiFillStar } from "react-icons/ai";
 
 const Testimonial = () => {
@@ -8,16 +8,17 @@ const Testimonial = () => {
       <div className="work-section-top">
         <p className="primary-subheading">Testimonial</p>
         <h1 className="primary-heading">What They Are Saying</h1>
+        <p className="primary-text">
+          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
+          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+        </p>
       </div>
       <div className="testimonial-section-bottom">
-        <img src={Logo} alt="" />
-        <h1>
-        Would like to acknowledge the hard work that makes VIVUM a
-success year-on-year. Wildcraft have been associated with the
-festival for over 5 years now, and looks at it as a great way to
-connect with Bangalore’s thriving student network. Excited for
-future collaborations and wishing the entire team all the very best
-        </h1>
+        <img src={ProfilePic} alt="" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
+          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+        </p>
         <div className="testimonials-stars-container">
           {/* <AiFillStar />
           <AiFillStar />
@@ -25,7 +26,7 @@ future collaborations and wishing the entire team all the very best
           <AiFillStar />
           <AiFillStar /> */}
         </div>
-        <h2> - Wildcraft, 5+ Year Partner</h2>
+        <h2>John Doe</h2>
       </div>
     </div>
   );
