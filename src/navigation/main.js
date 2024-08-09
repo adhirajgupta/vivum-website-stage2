@@ -8,13 +8,13 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import SignInSide from '../screens/Authentication/SignInScreen';
+import SignUp from '../screens/Authentication/SignUpScreen';
 import ResponsiveDrawer from './drawer';
 import Events from '../screens/Events/EventsScreen';
 import { Dashboard } from '../screens/Dashboard/DashboardScreen';
 import Sports from '../screens/Sports/SportsScreen';
 import Navbar from '../screens/Information/components/Navbar';
 import Overview from '../screens/Information/OverviewScreen';
-import ChangePassword from '../screens/ChangePassword/ChangePassword';
 
 const isAuthenticated = () => {
   // Add your authentication logic here
@@ -41,11 +41,11 @@ const Main = () => {
       <Routes>
         <Route path="/auth">
           <Route path="login" element={<SignInSide />} />
+          <Route path="signup" element={<SignUp />} />
         </Route>
         <Route path="/portal" element={<ProtectedRoute><ResponsiveDrawer /></ProtectedRoute>}>
           <Route path="/portal/dashboard" element={<Dashboard />} />
           <Route path="/portal/events" element={<Events />} />
-          <Route path="/portal/changepassword" element={<ChangePassword />} />
           <Route path="/portal/sport/:id" element={<Sports />} />
         </Route>
         <Route path="/" element={<Navbar />}>
