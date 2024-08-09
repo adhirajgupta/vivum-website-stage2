@@ -16,7 +16,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import '../OverviewScreenStyle.css'
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -50,7 +50,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-links-container">
           <a href="">Sports Events</a>
-          <a href="">Our Cause</a>
+
+          <Link to="/ourcause">Our Cause</Link>
           <a href="">Sponsors</a>
           <a href="">Cultural Events</a>
           <a href="">
