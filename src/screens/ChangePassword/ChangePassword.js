@@ -3,28 +3,22 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CopyRight from '../../global/Copyright';
 
 export default function ChangePassword() {
+  const [currentPassword, setCurrentPassword] = React.useState('');
+  const [newPassword, setNewPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
   const [errors, setErrors] = React.useState({
     newPassword: '',
     confirmPassword: '',
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const currentPassword = data.get('currentPassword');
-    const newPassword = data.get('newPassword');
-    const confirmPassword = data.get('confirmPassword');
-
+  const validateInputs = () => {
     let valid = true;
     const newErrors = { newPassword: '', confirmPassword: '' };
 
@@ -38,23 +32,43 @@ export default function ChangePassword() {
       valid = false;
     }
 
+  if(newPassword === currentPassword){
+    newErrors.newPassword = "New password cannot be the same as existing password"
+    valid = false
+  }
+
     setErrors(newErrors);
-
-    if (valid) {
-      console.log({
-        currentPassword,
-        newPassword,
-        confirmPassword,
-      });
-
-      // Call your helper function here
-      changePasswordHelper(currentPassword, newPassword);
-    }
+    return valid;
   };
 
-  const changePasswordHelper = (currentPassword, newPassword) => {
-    // Implement your change password logic here
-    console.log('Password change logic goes here');
+  const handleChangePassword = async () => {
+    console.log(currentPassword,newPassword)
+    const utoken = localStorage.getItem('utoken');
+
+    if (!validateInputs()) return;
+
+    try {
+      const response = await fetch('https://vivum24.pythonanywhere.com/userdata/changepwdh', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          utoken,
+          currentPassword,
+          newPassword,
+        }),
+      });
+
+
+      const result = await response.json();
+      console.log('Password change result:', result);
+
+      console.log("success",result?.success)
+      // Handle success or error based on the response
+    } catch (error) {
+      console.error('Error changing password:', error);
+    }
   };
 
   return (
@@ -74,7 +88,7 @@ export default function ChangePassword() {
         <Typography component="h1" variant="h5">
           Change Password
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -85,6 +99,8 @@ export default function ChangePassword() {
             id="currentPassword"
             autoComplete="current-password"
             autoFocus
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -95,6 +111,8 @@ export default function ChangePassword() {
             type="password"
             id="newPassword"
             autoComplete="new-password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
             error={!!errors.newPassword}
             helperText={errors.newPassword}
           />
@@ -107,14 +125,16 @@ export default function ChangePassword() {
             type="password"
             id="confirmPassword"
             autoComplete="new-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword}
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            onClick={handleChangePassword}
           >
             Change Password
           </Button>
