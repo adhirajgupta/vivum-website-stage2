@@ -1,7 +1,6 @@
 import React from "react";
 import Jayadeva from "../Assets/Vivum Logos/Jayadeva-Logo.png";
 import Shankara from "../Assets/Vivum Logos/Shankara-Logo.png";
-import DeliveryMeals from "../Assets/delivery-image.png";
 
 const Work = () => {
   const workInfoData = [

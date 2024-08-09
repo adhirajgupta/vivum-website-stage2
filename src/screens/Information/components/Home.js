@@ -1,5 +1,4 @@
 import React from "react";
-import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/Vivum Logos/VIVUM.png";
 import Navbar from "./Navbar";
 // import { FiArrowRight } from "react-icons/fi";
