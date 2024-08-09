@@ -15,6 +15,7 @@ import { Button, List } from '@mui/material';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import DrawerItem from './components/drawerItem';
 import DrawerAvatar from './components/drawerAvatar';
+import { Password } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -84,6 +85,8 @@ useEffect(() => {
       <List>
         <DrawerItem text="Dashboard" to="/portal/dashboard" icon={<InboxIcon />} />
         <DrawerItem text="Events" to="/portal/events" icon={<MailIcon />} />
+                <DrawerItem text="Password" to="/portal/changepassword" icon={<Password />} />
+
       </List>
     </div>
   );
