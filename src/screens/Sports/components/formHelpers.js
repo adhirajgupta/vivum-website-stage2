@@ -1,11 +1,10 @@
 import { convertPathName } from "../../../Constants";
 
 
-export const generateQrCodes = async (teamMembers,sport) => {
-    const utoken = localStorage.getItem('utoken')
+export const generateQrCodes = async (teamMembers) => {
     console.log('Generating QR Codes for team members', teamMembers);
     const promises = teamMembers.map(async (member) => {
-        const endpoint = `https://vivum24.pythonanywhere.com/userdata/qr?utoken=${utoken}&sport=${sport}&fname=${member.firstName}&lname=${member.lastName}`;
+        const endpoint = `https://vivum24.pythonanywhere.com/userdata/qr?fname=${member.firstName}&lname=${member.lastName}`;
         try {
             const response = await fetch(endpoint);
             console.log(`Response for ${member.firstName} ${member.lastName}:`, response);

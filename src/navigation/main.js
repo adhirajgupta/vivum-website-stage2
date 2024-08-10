@@ -14,8 +14,9 @@ import Events from '../screens/Events/EventsScreen';
 import { Dashboard } from '../screens/Dashboard/DashboardScreen';
 import Sports from '../screens/Sports/SportsScreen';
 import Navbar from '../screens/Information/components/Navbar';
-import Overview from '../screens/Information/OverviewScreen';
-import CauseScreen from '../screens/Cause/CauseScreen';
+import OurCause from '../screens/OurCause/OurCauseScreen';
+import Welcome from '../screens/Welcome/WelcomeScreen';
+//import CauseScreen from '../screens/Cause/CauseScreen';
 
 const isAuthenticated = () => {
   // Add your authentication logic here
@@ -50,8 +51,8 @@ const Main = () => {
           <Route path="/portal/sport/:id" element={<Sports />} />
         </Route>
         <Route path="/" element={<Navbar />}>
-          <Route path="/" element={<Overview />} />
-          <Route path="/ourcause" element={<CauseScreen />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/ourcause" element={<OurCause />} />
 
         </Route>
         <Route path="*" element={<NotFound />} />
