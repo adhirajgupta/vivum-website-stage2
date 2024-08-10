@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import FormComponent from './components/FormComponent';
 import { Typography } from '@mui/material';
 import { convertPathName } from '../../Constants';
@@ -7,6 +7,17 @@ import { convertPathName } from '../../Constants';
 export default function Sports() {
     const { id } = useParams(); // Access id parameter from URL
     const [teamMemberCount, setTeamMemberCount] = useState(0);
+    const [searchParams] = useSearchParams();
+
+    const eventData = {
+        name: searchParams.get('name') || "TBD",
+        location: searchParams.get('location') || "TBD",
+        date: searchParams.get('date') || "TBD",
+        time: searchParams.get('time') || "TBD",
+        description: searchParams.get('description') == "undefined" ? "No description available" : searchParams.get('description')
+    };
+
+    console.log(typeof eventData.description)
 
     useEffect(() => {
         console.log(id)
@@ -15,13 +26,28 @@ export default function Sports() {
             console.log(id.toLowerCase())
             switch (id.toLowerCase()) {
                 case 'basketball boys':
-                    return 5;
+                case 'basketball girls':
+                    return 12;
                 case 'football boys':
-                    return 11;
                 case 'football girls':
-                    return 11;
-                case "basketball girls":
-                    return 5
+                    return 16;
+                case 'hockey boys':
+                case 'hockey girls':
+                    return 16;
+                case 'volleyball boys':
+                case 'volleyball girls':
+                case 'throwball girls':
+                    return 12;
+                case 'tennis boys':
+                case 'tennis girls':
+                case 'badminton boys':
+                case 'badminton girls':
+                case 'table tennis boys':
+                case 'table tennis girls':
+                    return 3;
+                case "athletics boys":
+                case "athletics girls":
+                    return 4;
                 default:
                     return 0;
             }
@@ -35,7 +61,7 @@ export default function Sports() {
 
         !teamMemberCount == 0 ? (
             <div>
-                <FormComponent teamMemberCount={teamMemberCount} sport={id.toLowerCase()} />
+                <FormComponent teamMemberCount={teamMemberCount} sport={id.toLowerCase()} eventData={eventData} />
             </div>
         ) : (
             <Typography>

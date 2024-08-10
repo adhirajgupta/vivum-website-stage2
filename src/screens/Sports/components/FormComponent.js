@@ -2,33 +2,45 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, Grid, Container, Paper, CircularProgress } from '@mui/material';
 import { useFormik } from 'formik';
 import './FormStyling.css';
-import { validationSchema } from './formValidationSchema';
 import { generateQrCodes, sendFormData } from './formHelpers';
 import useFieldValues from './useFieldValues';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import LoadingDialog from './LoadingDialog'; // Import the LoadingDialog component
 
-const FormComponent = ({ teamMemberCount, sport }) => {
+const FormComponent = ({ teamMemberCount, sport, eventData }) => {
     const [imgData, setImgData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [dataLoading, setDataLoading] = useState(true);
+    const [openDialog, setOpenDialog] = useState(false);
+    const [incompleteForm, setIncompleteForm] = useState(false);
+    const [showDownloadButton, setShowDownloadButton] = useState(false);
 
     const formik = useFormik({
         initialValues: {
             teamMembers: Array(teamMemberCount).fill({ firstName: '', lastName: '', dateOfBirth: '' }),
         },
-        validationSchema,
+        validateOnChange: false, // Disable validation on change
+        validateOnBlur: false, // Disable validation on blur
         onSubmit: async (values) => {
             setLoading(true);
             setMessage("");
             console.log('Form Submitted', values);
-            const qrCodes = await generateQrCodes(values.teamMembers);
+            const qrCodes = await generateQrCodes(values.teamMembers, sport);
             setImgData(qrCodes);
             await sendFormData(values, sport);
             setLoading(false);
             setMessage("Please download the PDF for entry.");
+            setOpenDialog(true);
+
+            // Check if the form is complete
+            const isComplete = values.teamMembers.every(member => member.firstName && member.lastName && member.dateOfBirth);
+            setIncompleteForm(!isComplete);
+
+            if (isComplete) {
+                setShowDownloadButton(true);
+            }
         },
     });
 
@@ -67,15 +79,25 @@ const FormComponent = ({ teamMemberCount, sport }) => {
         doc.save("team_members_qr_codes.pdf");
     };
 
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+
+    const handleConfirm = () => {
+        setShowDownloadButton(true);
+        setIncompleteForm(false);  // Set this to false to ensure the download button shows up
+    };
+
     return (
         <Container maxWidth="lg">
             <Paper elevation={3} className="formContainer">
                 <Box p={4}>
                     <Typography variant="h5" gutterBottom>Event Details</Typography>
-                    <Typography variant="body1">Some details about the event.</Typography>
-                    <Typography variant="body1">Location: XYZ</Typography>
-                    <Typography variant="body1">Date: 2024-07-01</Typography>
-                    <Typography variant="body1">Time: 10:00 AM</Typography>
+                    <Typography variant="body1">Event Name: {eventData?.name || "TBD"}</Typography>
+                    <Typography variant="body1">Location: {eventData?.location || "TBD"}</Typography>
+                    <Typography variant="body1">Date: {eventData?.date || "TBD"}</Typography>
+                    <Typography variant="body1">Time: {eventData?.time || "TBD"}</Typography>
+                    <Typography variant="body1">Description: {eventData?.description || "No description available"}</Typography>
                     <Box my={4}>
                         <Typography variant="h6">Add Team Members</Typography>
                         {dataLoading ? (
@@ -95,8 +117,6 @@ const FormComponent = ({ teamMemberCount, sport }) => {
                                                     value={member.firstName}
                                                     onChange={formik.handleChange}
                                                     onBlur={formik.handleBlur}
-                                                    error={Boolean(formik.errors.teamMembers?.[index]?.firstName && formik.touched.teamMembers?.[index]?.firstName)}
-                                                    helperText={formik.touched.teamMembers?.[index]?.firstName && formik.errors.teamMembers?.[index]?.firstName}
                                                 />
                                             </Grid>
                                             <Grid item xs={12} sm={4}>
@@ -107,8 +127,6 @@ const FormComponent = ({ teamMemberCount, sport }) => {
                                                     value={member.lastName}
                                                     onChange={formik.handleChange}
                                                     onBlur={formik.handleBlur}
-                                                    error={Boolean(formik.errors.teamMembers?.[index]?.lastName && formik.touched.teamMembers?.[index]?.lastName)}
-                                                    helperText={formik.touched.teamMembers?.[index]?.lastName && formik.errors.teamMembers?.[index]?.lastName}
                                                 />
                                             </Grid>
                                             <Grid item xs={12} sm={4}>
@@ -121,8 +139,6 @@ const FormComponent = ({ teamMemberCount, sport }) => {
                                                     value={member.dateOfBirth}
                                                     onChange={formik.handleChange}
                                                     onBlur={formik.handleBlur}
-                                                    error={Boolean(formik.errors.teamMembers?.[index]?.dateOfBirth && formik.touched.teamMembers?.[index]?.dateOfBirth)}
-                                                    helperText={formik.touched.teamMembers?.[index]?.dateOfBirth && formik.errors.teamMembers?.[index]?.dateOfBirth}
                                                 />
                                             </Grid>
                                         </React.Fragment>
@@ -138,7 +154,15 @@ const FormComponent = ({ teamMemberCount, sport }) => {
                     </Box>
                 </Box>
             </Paper>
-            <LoadingDialog open={loading || !!message} loading={loading} message={message} onDownload={generatePDF} />
+            <LoadingDialog
+                open={openDialog}
+                loading={loading}
+                message={message}
+                onDownload={generatePDF}
+                onClose={handleCloseDialog}
+                incompleteForm={incompleteForm}
+                onConfirm={handleConfirm}
+            />
         </Container>
     );
 };
