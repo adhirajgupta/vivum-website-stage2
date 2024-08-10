@@ -9,8 +9,7 @@ import Title from './Title';
 export default function EventComponent({ events, navigate }) {
     const handleRowClick = (event) => {
 
-navigate(`/portal/sport/${event.name}?name=${encodeURIComponent(event.name)}&location=${encodeURIComponent(event.location)}&date=${encodeURIComponent(event.date)}&time=${encodeURIComponent(event.time)}&description=${encodeURIComponent(event.description)}`);
-
+        navigate(`/sport/${event.name}`);
     };
 
     const getEventKeys = (event) => {

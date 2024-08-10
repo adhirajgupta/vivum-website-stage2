@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Horizon';
+    src: url(../Assets/Fonts/Horizon.otf);
+  }
+  @font-face {
+    font-family: 'Monserrat-Regular';
+    src: url(../Assets/Fonts/Montserrat-Bold.ttf);
+  }
+  @font-face {
+    font-family: 'Montserrat-Bold';
+    src: url(../Assets/Fonts/Montserrat-Regular.ttf);
+  }
+
+.charity-container {
+    margin-top: 2.5rem;
+  }
+  
+  #charity-text {
+    text-align: center;
+    max-width: 600px !important;
+    font-family: 'Montserrat-Bold';
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  
+  #charity-heading {
+    max-width: 700px !important;
+    margin-top: 0.5rem;
+  }
+  
+  .charity-container-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .charity-card-container {
+    width: 290px;
+    min-height: 500px;
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 1rem;
+    color: #505050;
+    margin: 1rem 1rem;
+    border: #590505;
+  }
+  
+  .charity-card-container h2 {
+    margin: 1rem 0rem;
+  }
+  
+  .charity-info-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .charity-card-container p {
+    flex: 1;
+    display: flex;
+    align-items:flex-end;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media only screen and (min-aspect-ratio: 1){
+
+  }

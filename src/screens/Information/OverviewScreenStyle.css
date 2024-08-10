@@ -1,16 +1,3 @@
-/* FONTS */
-@font-face {
-  font-family: 'Horizon';
-  src: url(Assets/Fonts/Horizon-Regular.otf);
-}
-@font-face {
-  font-family: 'Monserrat-Regular';
-  src: url(Assets/Fonts/Montserrat-Regular.ttf);
-}
-@font-face {
-  font-family: 'Montserrat-Bold';
-  src: url(Assets/Fonts/Montserrat-Bold.ttf);
-}
 
 
 /* BASE EDITING */
@@ -42,6 +29,9 @@ body{
   color: white; /* Change text color to white */
   max-width: 600px;
   font-family: 'Horizon';
+}
+h3 {
+  font-size: 2rem;
 }
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
