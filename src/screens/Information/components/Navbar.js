@@ -45,8 +45,8 @@ const Navbar = () => {
     <>
       <nav>
         <div className="nav-logo-container">
-          <p>Vivum 2024
-          </p>
+          <h3>Vivum 2024
+          </h3>
         </div>
         <div className="navbar-links-container">
           <a href="">Sports Events</a>

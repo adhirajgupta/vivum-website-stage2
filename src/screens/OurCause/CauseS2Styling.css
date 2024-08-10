@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'Horizon';
+    src: url(../Assets/Fonts/Horizon.otf);
+  }
+  @font-face {
+    font-family: 'Monserrat-Regular';
+    src: url(../Assets/Fonts/Montserrat-Bold.ttf);
+  }
+  @font-face {
+    font-family: 'Montserrat-Bold';
+    src: url(../Assets/Fonts/Montserrat-Regular.ttf);
+  }
+  
+.section2-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.section2-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section2-text p{
+    font-family: 'Montserrat-Bold';
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+@media only screen and (min-aspect-ratio: 1){
+  .section2-container{
+    flex-direction: row;
+    margin-top: 5rem;
+  }
+  #section2-heading{
+    margin-top: 2rem;
+  }
+  #section2-text {
+    margin-top: 2rem;
+  }
+
+}
