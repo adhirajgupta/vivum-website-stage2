@@ -1,4 +1,5 @@
 import React from "react";
+import VIVUM from "../Assets/Vivum Logos/VIVUM.png"
 // import { BsTwitter } from "react-icons/bs";
 // import { SiLinkedin } from "react-icons/si";
 // import { BsYoutube } from "react-icons/bs";
@@ -9,7 +10,7 @@ const Footer = () => {
     <div className="footer-wrapper">
       <div className="footer-section-one">
         <div className="footer-logo-container">
-          <h1>Claim your throne!</h1>
+          <img src={VIVUM} alt="Vivum Logo" style={{height: "10rem"}}/>
         </div>
         <div className="footer-icons">
           {/* <BsTwitter />
@@ -25,7 +26,6 @@ const Footer = () => {
           <span>Sponsors</span>
         </div>
         <div className="footer-section-columns">
-          <span>Insert Phone No</span>
           <span>vivum24@tisb.ac.in</span>
         </div>
         <div className="footer-section-columns">

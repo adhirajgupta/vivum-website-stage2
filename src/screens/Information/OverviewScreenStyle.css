@@ -11,11 +11,14 @@
   font-family: 'Montserrat-Bold';
   src: url(Assets/Fonts/Montserrat-Bold.ttf);
 }
+
+
 /* BASE EDITING */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 img{
   max-width: 100%;
@@ -30,9 +33,46 @@ img{
 body{
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #590505; /* Dark red background */
+  background-image: linear-gradient(#590505, #8c2424);
 }
 
+/* HEADINGS */
+.primary-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: white; /* Change text color to white */
+  max-width: 600px;
+  font-family: 'Horizon';
+}
+.primary-text {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 500px;
+  color: white; /* Change text color to white */
+  margin: 1rem 0rem;
+}
+.secondary-button {
+  padding: 1rem 2.5rem;
+  background-color: white; /* Change button background color to white */
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: black; /* Change button text color to black */
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat-Bold';
+}
+.secondary-button svg {
+  margin-left: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.secondary-button:hover {
+  background-color: rgb(234, 234, 234);
+}
 /* NAVBAR CSS STYLING */
 nav{
   display: flex;
@@ -65,6 +105,8 @@ nav{
   transition: 0.2s;
   color: black; /* Set button text color to black */
   margin-right: 1rem;
+  font-family: 'Montserrat-Bold'
+
 }
 .navbar-cart-icon {
   font-size: 1.15rem;
@@ -77,7 +119,7 @@ nav{
   padding-left: 1rem;
 }
 .primary-button:hover {
-  background-color: rgb(234, 234, 234);
+  background-color: rgb(192, 190, 190);
 }
 
 .navbar-menu-container svg {
@@ -101,65 +143,43 @@ nav{
 }
 .home-image-section {
   position: relative;
-  right: 0px;
   flex: 1;
-  object-fit: cover;
-  border-radius: 50%;
+  border-collapse: separate;
+  object-fit:contain;
+  overflow: hidden;
+  border-radius: 100%;
+  width: 100%;
+  right:3rem;
 }
 .home-text-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content:center;
+  align-items:start;
   z-index: 3;
+  text-align: left;
 }
-/* HEADINGS */
-.primary-heading {
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: white; /* Change text color to white */
-  max-width: 600px;
-  text-align: right;
-  font-family: 'Horizon';
+.home-text-section h1{
+  text-align: left;
 }
-.primary-text {
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  max-width: 500px;
-  color: white; /* Change text color to white */
-  margin: 1rem 0rem;
-  text-align: right;
+.home-text-section p{
+  text-align: left;
+  align-self: flex-start;
 }
-.secondary-button {
-  padding: 1rem 2.5rem;
-  background-color: white; /* Change button background color to white */
-  outline: none;
-  border: none;
-  border-radius: 5rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  font-weight: 600;
-  color: black; /* Change button text color to black */
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.secondary-button svg {
-  margin-left: 0.75rem;
-  font-size: 1.5rem;
+.home-text-section button{
+  align-self: flex-start;
 }
 
-.secondary-button:hover {
-  background-color: rgb(234, 234, 234);
-}
 
 /* ABOUT SECTION CSS STYLING */
 .about-section-container {
-  margin-top: 7rem;
+  margin-top: 2rem;
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  height: 55rem;
+  align-items:start;
 }
 
 .about-background-image-container {
@@ -170,9 +190,10 @@ nav{
 #about-section-heading {
   margin-right: 7rem;
 }
-.about-section-image-container {
+.about-section-carousel {
   flex: 0.9;
   margin-right: 3rem;
+  height:100%;
 }
 
 .about-section-text-container {
@@ -180,12 +201,23 @@ nav{
   justify-content: center;
   display: flex-end;
   flex-direction: column;
+  height: 100%;
+  align-items: center;
+  width: 6rem;
 }
-
+.about-section-text-container h1{
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.about-section-text-container p{
+  margin-top: 2rem;
+  margin-bottom:2rem;
+}
 .primary-subheading {
   font-weight: 700;
   color: #fe9e0d;
   font-size: 1.15rem;
+  text-align: center;
 }
 
 .about-buttons-container {
@@ -213,6 +245,14 @@ nav{
   font-size: 3rem;
   margin-right: 1rem;
 }
+.about-section-carousel {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+  height: 100%;
+}
+
 
 /* CONTACT SECTION CSS */
 .contact-page-wrapper h1 {
@@ -245,6 +285,24 @@ nav{
   outline: none;
   font-size: 1.3rem;
   padding: 0.5rem 1rem;
+  max-width: 100%;
+  font-size: 1rem !important;
+  padding: 0.5rem 1rem !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+  text-align: center;
+  font-family: 'Montserrat-Regular';
+}
+
+
+.contact-heading{
+  font-family: 'Horizon';
+  text-align: center;
+  color: white;
+}
+.contact-page-wrapper
+.footer-wrapper {
+  flex-direction: column;
 }
 
 /* FOOTER CSS STYLE */
@@ -354,15 +412,17 @@ nav{
   flex-direction: column;
 }
 
-.work-section-info {
-  width: 290px;
-  min-height: 350px;
-  background-color: white;
+.sponsor-info {
+  width: 33%;
+  max-width: 300px;
+  min-width: 150px;
+  min-height: 300px;
+  max-height: 450px;
+  background-color: rgb(255, 255, 255);
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
   border-radius: 1rem;
   color: #505050;
@@ -370,7 +430,10 @@ nav{
 }
 
 .work-section-info h2 {
-  margin: 1rem 0rem;
+  font-family: 'Horizon';
+  font-size: 1.5rem;
+  width: 100%;
+  max-height: 30%;
 }
 
 .work-section-bottom {
@@ -384,8 +447,11 @@ nav{
 .work-section-info p {
   flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   font-weight: 600;
+  text-align: center;
+  width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -431,11 +497,7 @@ nav{
     flex-direction: column;
   }
 
-  .home-image-section,
-  .about-section-image-container {
-    width: 100%;
-    max-width: 400px;
-  }
+  
 
   .primary-heading {
     text-align: center;
@@ -458,6 +520,7 @@ nav{
     font-size: 1rem;
     padding: 0.8rem 2rem;
     cursor: pointer;
+    font-family: 'Montserrat-Bold';
   }
 
   .about-section-container {
@@ -495,25 +558,7 @@ nav{
     margin-top: 1rem !important;
   }
 
-  .contact-form-container {
-    padding: 0.5rem !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1rem !important;
-  }
-
-  .contact-form-container input {
-    font-size: 1rem !important;
-    max-width: 100%;
-    padding: 0.5rem 1rem !important;
-    margin-bottom: 0.8rem !important;
-    text-align: center;
-  }
-  contact-page-wrapper overview
-  .footer-wrapper {
-    flex-direction: column;
-  }
+  
 
   .footer-section-two {
     flex-direction: column;

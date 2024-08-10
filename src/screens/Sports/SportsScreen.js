@@ -24,9 +24,7 @@ export default function Sports() {
         // Function to determine teamMemberCount based on id parameter
         const getTeamMemberCount = () => {
             console.log(id.toLowerCase())
-            const removeTrailingAB = (id.endsWith('A') || id.endsWith('B')) ? id.slice(0, -1) : id;
-            console.log(removeTrailingAB)
-            switch (removeTrailingAB.toLowerCase().trim()) {
+            switch (id.toLowerCase()) {
                 case 'basketball boys':
                 case 'basketball girls':
                     return 12;
@@ -53,7 +51,6 @@ export default function Sports() {
                 default:
                     return 0;
             }
-
         };
 
         // Set teamMemberCount based on id when component mounts
