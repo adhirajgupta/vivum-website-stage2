@@ -9,7 +9,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import LoadingDialog from './LoadingDialog'; // Import the LoadingDialog component
 
-const FormComponent = ({ teamMemberCount, sport }) => {
+const FormComponent = ({ teamMemberCount, sport, eventData }) => {
     const [imgData, setImgData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -24,7 +24,7 @@ const FormComponent = ({ teamMemberCount, sport }) => {
             setLoading(true);
             setMessage("");
             console.log('Form Submitted', values);
-            const qrCodes = await generateQrCodes(values.teamMembers);
+            const qrCodes = await generateQrCodes(values.teamMembers, sport);
             setImgData(qrCodes);
             await sendFormData(values, sport);
             setLoading(false);
@@ -72,10 +72,11 @@ const FormComponent = ({ teamMemberCount, sport }) => {
             <Paper elevation={3} className="formContainer">
                 <Box p={4}>
                     <Typography variant="h5" gutterBottom>Event Details</Typography>
-                    <Typography variant="body1">Some details about the event.</Typography>
-                    <Typography variant="body1">Location: XYZ</Typography>
-                    <Typography variant="body1">Date: 2024-07-01</Typography>
-                    <Typography variant="body1">Time: 10:00 AM</Typography>
+                    <Typography variant="body1">Event Name: {eventData?.name || "TBD"}</Typography>
+                    <Typography variant="body1">Location: {eventData?.location || "TBD"}</Typography>
+                    <Typography variant="body1">Date: {eventData?.date || "TBD"}</Typography>
+                    <Typography variant="body1">Time: {eventData?.time || "TBD"}</Typography>
+                    <Typography variant="body1">Description: {eventData?.description || "No description available"}</Typography>
                     <Box my={4}>
                         <Typography variant="h6">Add Team Members</Typography>
                         {dataLoading ? (
