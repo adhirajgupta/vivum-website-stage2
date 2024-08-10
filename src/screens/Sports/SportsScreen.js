@@ -13,36 +13,18 @@ export default function Sports() {
         // Function to determine teamMemberCount based on id parameter
         const getTeamMemberCount = () => {
             console.log(id.toLowerCase())
-            const removeTrailingAB = (id.endsWith('A') || id.endsWith('B')) ? id.slice(0, -1) : id;
-            console.log(removeTrailingAB)
-            switch (removeTrailingAB.toLowerCase().trim()) {
+            switch (id.toLowerCase()) {
                 case 'basketball boys':
-                case 'basketball girls':
                     return 5;
                 case 'football boys':
+                    return 11;
                 case 'football girls':
                     return 11;
-                case 'hockey boys':
-                case 'hockey girls':
-                    return 11;
-                case 'volleyball boys':
-                case 'volleyball girls':
-                case 'throwball girls':
-                    return 6;
-                case 'tennis boys':
-                case 'tennis girls':
-                case 'badminton boys':
-                case 'badminton girls':
-                case 'table tennis boys':
-                case 'table tennis girls':
-                    return 3;
-                case "athletics boys":
-                case "athletics girls":
-                    return 4;
+                case "basketball girls":
+                    return 5
                 default:
                     return 0;
             }
-
         };
 
         // Set teamMemberCount based on id when component mounts

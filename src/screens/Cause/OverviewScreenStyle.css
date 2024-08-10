@@ -116,19 +116,30 @@ nav{
   justify-content: center;
   align-items: flex-end;
 }
+
+.home-text-section h1{
+  text-align: right;
+}
+.home-text-section h2{
+  text-align: right;
+  font-family: 'Montserrat-Regular';
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+}
+.home-text-section button{
+  align-self: flex-end;
+}
 /* HEADINGS */
 .primary-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   color: white; /* Change text color to white */
   max-width: 650px;
-  text-align: right;
 }
 .secondary-heading {
   font-size: clamp(2rem, 4vw, 4rem);
   color: white;
   max-width: 650px;
-  font-family: 'Montserrat-Bold';
-  text-align: right;
+  font-family: 'Montserrat-Regular';
 }
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
@@ -168,6 +179,7 @@ nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  left: 2rem;
 }
 
 .about-background-image-container {
@@ -180,9 +192,12 @@ nav{
   font-size: 3.5rem;
 }
 .about-section-image-container {
-  flex: 0.9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
   margin-right: 3rem;
-  height: 600px;
+  height: 600;
 }
 
 .about-section-text-container {
@@ -190,6 +205,12 @@ nav{
   justify-content: center;
   display: flex-end;
   flex-direction: column;
+}
+.about-section-text-container h1{
+  text-align: right;
+}
+.about-section-text-container p{
+  margin-right: 6.5rem;
 }
 
 .primary-subheading {
@@ -344,7 +365,7 @@ nav{
 
 /* WORK SECTION CSS */
 .work-section-wrapper {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .work-section-top p {
@@ -365,7 +386,7 @@ nav{
 
 .work-section-info {
   width: 290px;
-  min-height: 465px;
+  min-height: 550px;
   background-color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -448,7 +469,7 @@ nav{
   }
 
   .primary-heading {
-    text-align: center;
+    text-align: right;
     max-width: 90%;
   }
 
@@ -462,6 +483,7 @@ nav{
     justify-content: center;
     align-items: center;
     margin-top: 4rem;
+    margin-right: 2rem;
   }
 
   .secondary-button {
