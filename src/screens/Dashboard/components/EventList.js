@@ -71,7 +71,7 @@ export default function EventList() {
           // data.map(val,index => {
           //   crea
           // })
-          console.log(data);
+          console.log("data for event fetch",data);
         } catch (error) {
           console.error('Error fetching user data:', error);
         }

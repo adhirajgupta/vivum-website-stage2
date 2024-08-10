@@ -1,57 +1,73 @@
 @font-face {
     font-family: 'Horizon';
     src: url(../../Assets/Fonts/Horizon.otf);
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'Monserrat-Bold';
     src: url(../../Assets/Fonts/Montserrat-Bold.ttf);
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'Montserrat-Regular';
     src: url(../../Assets/Fonts/Montserrat-Regular.ttf);
-  }
+}
 
-.welcome-section1-container{
+.App {
+    max-width: 100%;
+    overflow-x: hidden;
+    background-image: linear-gradient(#590505, #8c2424);
+}
+
+.welcome-section1-container {
     margin-top: 1rem;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
 }
-.welcome-section1-text{
+
+.welcome-section1-text {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#welcome-s1-text{
+
+#welcome-s1-text {
     font-family: 'Montserrat-Bold';
     font-weight: 600;
     font-size: 1.2rem;
 }
-#welcome-s1-button{
+
+#welcome-s1-button {
     width: 60%;
     max-width: 400px;
 }
-.welcome-section1-image{
+
+.welcome-section1-image {
     margin-top: 1.5rem;
 }
-.welcome-section1-image img{
+
+.welcome-section1-image img {
     border-radius: 50%;
 }
 
-@media only screen and (min-aspect-ratio: 1){
-    .welcome-section1-container{
+@media only screen and (min-aspect-ratio: 1) {
+    .welcome-section1-container {
         flex-direction: row;
     }
-    .welcome-section1-text{
+
+    .welcome-section1-text {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-left: 2.5rem;
     }
-    #welcome-s1-heading{
+
+    #welcome-s1-heading {
         text-align: left;
     }
-    #welcome-s1-text{
+
+    #welcome-s1-text {
         text-align: left;
         font-family: 'Montserrat-Bold';
         font-weight: 600;

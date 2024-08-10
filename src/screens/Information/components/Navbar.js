@@ -43,7 +43,7 @@ const Navbar = () => {
   ];
   return (
     <>
-      <nav>
+      <nav >
         <div className="nav-logo-container">
           <h3>Vivum 2024
           </h3>
@@ -57,7 +57,9 @@ const Navbar = () => {
           <a href="">
             {/* <BsCart2 className="navbar-cart-icon" /> */}
           </a>
-          <button className="primary-button">Login</button>
+          <Link to="/auth/login">
+            <button className="primary-button">Login</button>
+          </Link>
         </div>
         <div className="navbar-menu-container">
           {/* <HiOutlineBars3 onClick={() => setOpenMenu(true)} /> */}

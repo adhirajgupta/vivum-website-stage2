@@ -13,15 +13,15 @@ img{
 }
 .App{
   min-height: 100vh;
-  width: 85vw;
+  width: 100vw;
   max-width: 1900px;
   margin: 0rem auto;
 }
-body{
+/* body{
   max-width: 100%;
   overflow-x: hidden;
   background-image: linear-gradient(#590505, #8c2424);
-}
+} */
 
 /* HEADINGS */
 .primary-heading {

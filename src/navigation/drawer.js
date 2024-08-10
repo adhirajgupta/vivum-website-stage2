@@ -15,6 +15,7 @@ import { Button, List } from '@mui/material';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import DrawerItem from './components/drawerItem';
 import DrawerAvatar from './components/drawerAvatar';
+import { Password } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -68,14 +69,14 @@ const ResponsiveDrawer = ({ window }) => {
     }
   };
 
-useEffect(() => {
-    console.log(pathName.pathname,"- pathname")
-  if (pathName.pathname.endsWith('/portal/') && pathName.pathname !== '/portal/dashboard') {
-    navigate('/portal/dashboard');
-  } else {
-    checkSessionAndFetch();
-  }
-}, []);
+  useEffect(() => {
+    console.log(pathName.pathname, "- pathname")
+    if (pathName.pathname.endsWith('/portal/') && pathName.pathname !== '/portal/dashboard') {
+      navigate('/portal/dashboard');
+    } else {
+      checkSessionAndFetch();
+    }
+  }, []);
 
   const drawer = (
     <div>
@@ -84,6 +85,7 @@ useEffect(() => {
       <List>
         <DrawerItem text="Dashboard" to="/portal/dashboard" icon={<InboxIcon />} />
         <DrawerItem text="Events" to="/portal/events" icon={<MailIcon />} />
+        <DrawerItem text="ChangePassword" to="/portal/changepassword" icon={<Password />} />
       </List>
     </div>
   );

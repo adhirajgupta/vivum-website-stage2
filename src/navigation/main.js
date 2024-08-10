@@ -16,6 +16,7 @@ import Sports from '../screens/Sports/SportsScreen';
 import Navbar from '../screens/Information/components/Navbar';
 import OurCause from '../screens/OurCause/OurCauseScreen';
 import Welcome from '../screens/Welcome/WelcomeScreen';
+import ChangePassword from '../screens/ChangePassword/ChangePassword';
 //import CauseScreen from '../screens/Cause/CauseScreen';
 
 const isAuthenticated = () => {
@@ -49,6 +50,8 @@ const Main = () => {
           <Route path="/portal/dashboard" element={<Dashboard />} />
           <Route path="/portal/events" element={<Events />} />
           <Route path="/portal/sport/:id" element={<Sports />} />
+                    <Route path="/portal/changepassword" element={<ChangePassword />} />
+
         </Route>
         <Route path="/" element={<Navbar />}>
           <Route path="/" element={<Welcome />} />
