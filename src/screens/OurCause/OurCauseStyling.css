@@ -68,10 +68,13 @@
         align-items: flex-end;
         margin-left: 0rem;
     }
-    .section1-top h1,p{
+    #section1-top-text{
         text-align: right;
     }
-    .section1-top p {
+    #section1-top-heading{
+        text-align: right;
+    }
+    #section1-top-text{
         margin-top: 2.5rem;
         font-size: 1.4rem;
     }
