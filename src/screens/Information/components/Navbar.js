@@ -49,8 +49,7 @@ const Navbar = () => {
           </h3>
         </div>
         <div className="navbar-links-container">
-          <a href="">Sports Events</a>
-
+          <a href="https://vivum24.pythonanywhere.com/assets/sports_fixtures.pdf" target="_blank">Sports Events</a>
           <Link to="/ourcause">Our Cause</Link>
           <a href="">Sponsors</a>
           <a href="">Cultural Events</a>
