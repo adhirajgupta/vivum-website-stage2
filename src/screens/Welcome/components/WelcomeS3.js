@@ -4,6 +4,8 @@ import Nivia from "../../Assets/Sponsor Logos/Nivia Logo.jpg";
 import Roposo from "../../Assets/Sponsor Logos/Roposo Logo.jpg";
 import Wildcraft from "../../Assets/Sponsor Logos/WildCraft.jpg";
 import PokerApparel from "../../Assets/Sponsor Logos/Poker Apparel.jpg";
+import ElectricEBikes from "../../Assets/Sponsor Logos/Electric Ebikes.jpg";
+import KangarooElectric from "../../Assets/Sponsor Logos/Kangaroo.jpg";
 
 const WelcomeS3 = () => {
   const workInfoData = [
@@ -31,6 +33,17 @@ const WelcomeS3 = () => {
       image: PokerApparel,
       title: "Poker Apparel",
       text: "Poker Apparel",
+    },
+    {
+      image: ElectricEBikes,
+      title: "Electric E Bikes",
+      text: "Electric E Bikes",
+    }
+    ,
+    {
+      image: KangarooElectric,
+      title: "Kangaroo Electric",
+      text: "Kangaroo Electric",
     }
   ];
   return (
