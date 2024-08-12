@@ -9,10 +9,10 @@ const CauseS1 = () => {
         <div className="section1-container">
             {/* <Navbar /> */}
             <div className="section1-top">
-                <h1 className="primary-heading">
+                <h1 className="primary-heading" id="section1-top-heading">
                     Why we host VIVUM?
                 </h1>
-                <p>Since 2019, 65-70% of Indian healthcare expenditure has been out-of-pocket
+                <p id="section1-top-text">Since 2019, 65-70% of Indian healthcare expenditure has been out-of-pocket
                     instalments. VIVUM ’24 aims to address the challenge of affordability and
                     accessibility by bridging the gap between medical aid and the underprivileged.
                 </p>
