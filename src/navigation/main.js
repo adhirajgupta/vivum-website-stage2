@@ -17,12 +17,21 @@ import Navbar from '../screens/Information/components/Navbar';
 import OurCause from '../screens/OurCause/OurCauseScreen';
 import Welcome from '../screens/Welcome/WelcomeScreen';
 import ChangePassword from '../screens/ChangePassword/ChangePassword';
+import PhoneNavbar from '../screens/Welcome/components/MobileNavbar';
 //import CauseScreen from '../screens/Cause/CauseScreen';
 
 const isAuthenticated = () => {
   // Add your authentication logic here
   // For example, check if a user token exists in localStorage or context
   return localStorage.getItem('utoken') !== null;
+};
+
+const isMobileDevice = () => {
+  return window.innerWidth <= 768; // Common breakpoint for mobile devices
+};
+
+const ConditionalComponent = () => {
+  return isMobileDevice() ? <PhoneNavbar /> : <Navbar />;
 };
 
 const ProtectedRoute = ({ children }) => {
@@ -53,7 +62,7 @@ const Main = () => {
                     <Route path="/portal/changepassword" element={<ChangePassword />} />
 
         </Route>
-        <Route path="/" element={<Navbar />}>
+        <Route path="/" element={<ConditionalComponent/>}>
           <Route path="/" element={<Welcome />} />
           <Route path="/ourcause" element={<OurCause />} />
 
