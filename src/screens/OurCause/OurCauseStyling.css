@@ -63,6 +63,7 @@
         margin-bottom: 0rem;
         max-width: 50%;
         align-items: flex-start;
+        margin-left: 5rem;
     }
     .section1-top h1,p{
         text-align: left;

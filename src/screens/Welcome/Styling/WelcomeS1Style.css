@@ -20,6 +20,7 @@
 }
 
 .welcome-section1-container {
+    max-width: 100%;
     margin-top: 1rem;
     display: flex;
     flex-direction: column-reverse;
@@ -45,6 +46,7 @@
 
 .welcome-section1-image {
     margin-top: 1.5rem;
+    right: 2rem;
 }
 
 .welcome-section1-image img {
@@ -54,8 +56,11 @@
 @media only screen and (min-aspect-ratio: 1) {
     .welcome-section1-container {
         flex-direction: row;
+        justify-content: space-between;
     }
-
+    .welcome-section1-image{
+        margin-left: 2.5rem;
+    }
     .welcome-section1-text {
         display: flex;
         flex-direction: column;

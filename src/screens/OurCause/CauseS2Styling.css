@@ -38,6 +38,8 @@
   }
   #section2-text {
     margin-top: 2rem;
+    width: 100%;
+    align-self: flex-end;
   }
 
 }
