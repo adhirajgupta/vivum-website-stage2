@@ -20,10 +20,10 @@ const CauseS1 = () => {
 
             <div className="section1-bottom">
                 <img src={VivumLogo} alt="Vivum Logo"></img>
-                <h2 className="secondary-heading">
+                <h2 className="secondary-heading" id="support-mission-line">
                     You can support our mission!
                 </h2>
-                <button className="secondary-button">
+                <button className="secondary-button" id="learnhow-button">
                     Learn How
                     {/* <FiArrowRight />{" "} */}
                 </button>

@@ -56,16 +56,17 @@
 @media only screen and (min-aspect-ratio: 1) {
     .welcome-section1-container {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
     }
     .welcome-section1-image{
-        margin-left: 2.5rem;
+        margin-right: 2.5rem;
     }
     .welcome-section1-text {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-left: 2.5rem;
+        justify-content: center;
     }
 
     #welcome-s1-heading {
