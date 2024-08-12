@@ -29,10 +29,10 @@ export default function Sports() {
             switch (removeTrailingAB.toLowerCase().trim()) {
                 case 'basketball boys':
                 case 'basketball girls':
-                    return 12;
+                    return 13;
                 case 'football boys':
                 case 'football girls':
-                    return 16;
+                    return 17;
                 case 'hockey boys':
                 case 'hockey girls':
                     return 16;
@@ -46,10 +46,10 @@ export default function Sports() {
                 case 'badminton girls':
                 case 'table tennis boys':
                 case 'table tennis girls':
-                    return 3;
+                    return 4;
                 case "athletics boys":
                 case "athletics girls":
-                    return 4;
+                    return 5;
                 default:
                     return 0;
             }
