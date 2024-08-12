@@ -16,11 +16,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+}
+.section2-image{
+  width: 30%;
+  align-items: center;
 }
 .section2-text{
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 50%;
 }
 .section2-text p{
     font-family: 'Montserrat-Bold';

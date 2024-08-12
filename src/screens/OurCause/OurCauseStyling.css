@@ -57,24 +57,30 @@
 @media only screen and (min-aspect-ratio: 1){
     .section1-container {
         flex-direction: row;
+        justify-content: center;
+    }
+    .section1-bottom{
     }
     .section1-top{
         margin-top: 3rem;
         margin-bottom: 0rem;
-        max-width: 50%;
-        align-items: flex-start;
-        margin-left: 5rem;
+        width: 25%;
+        align-items: flex-end;
+        margin-left: 0rem;
     }
-    .section1-top h1,p{
-        text-align: left;
+    #section1-top-text{
+        text-align: right;
     }
-    .section1-top p {
+    #section1-top-heading{
+        text-align: right;
+    }
+    #section1-top-text{
         margin-top: 2.5rem;
         font-size: 1.4rem;
     }
     .section1-bottom img{
         display: block;
         object-fit:fill;
+        max-height: 600px;
     }
-
 }

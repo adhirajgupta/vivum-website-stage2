@@ -40,6 +40,7 @@
     .section-2-container{
         flex-direction: row;
         margin-top: 2rem;
+        justify-content: center;
     }
     #section2-subheading{
         text-align: right;
@@ -53,10 +54,16 @@
     #section2-text2{
         text-align: right;
     }
+    .about-section-carousel{
+        
+        align-self: flex-start;
+        max-height: 1920px;
+        max-width: 30%;
+        margin-left: 5rem;
+    }
     .section-2-text-container{
         align-items: flex-end;
-        padding-right: 2rem;
-        margin-right: 2rem;
         max-width: 50%;
+        margin-right: 5rem;
     }
 }
