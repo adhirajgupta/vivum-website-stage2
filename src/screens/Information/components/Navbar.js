@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-// import { BsCart2 } from "react-icons/bs";
-// import { HiOutlineBars3 } from "react-icons/hi2";
+import { BsCart2 } from "react-icons/bs";
+import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -11,10 +11,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
-import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import SportIcon from "@mui/icons-material/Sports";
+import HelpIcon from "@mui/icons-material/Handshake";
+import MoneyIcon from "@mui/icons-material/MoneyOutlined";
+import MusicIcon from "@mui/icons-material/MusicNote";
 import { Link, Outlet } from "react-router-dom";
 import '../OverviewScreenStyle.css'
 const Navbar = () => {
@@ -23,22 +23,27 @@ const Navbar = () => {
     {
       text: "Home",
       icon: <HomeIcon />,
+      link: "/",
     },
     {
-      text: "About",
-      icon: <InfoIcon />,
+      text: "Sports Events",
+      icon: <SportIcon />,
+      link: "https://vivum24.pythonanywhere.com/assets/sports_fixtures.pdf",
     },
     {
-      text: "Testimonials",
-      icon: <CommentRoundedIcon />,
+      text: "Our Cause",
+      icon: <HelpIcon />,
+      link: "/ourcause",
     },
     {
-      text: "Contact",
-      icon: <PhoneRoundedIcon />,
+      text: "Sponsors",
+      icon: <MoneyIcon />,
+      link: "",
     },
     {
-      text: "Cart",
-      icon: <ShoppingCartRoundedIcon />,
+      text: "Cultural Events",
+      icon: <MusicIcon />,
+      link: "",
     },
   ];
   return (
@@ -49,6 +54,7 @@ const Navbar = () => {
           </h3>
         </div>
         <div className="navbar-links-container">
+          <Link to="/">Home</Link>
           <a href="https://vivum24.pythonanywhere.com/assets/sports_fixtures.pdf" target="_blank">Sports Events</a>
           <Link to="/ourcause">Our Cause</Link>
           <a href="">Sponsors</a>
@@ -61,7 +67,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-menu-container">
-          {/* <HiOutlineBars3 onClick={() => setOpenMenu(true)} /> */}
+          <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
         </div>
         <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
           <Box
@@ -73,7 +79,7 @@ const Navbar = () => {
             <List>
               {menuOptions.map((item) => (
                 <ListItem key={item.text} disablePadding>
-                  <ListItemButton>
+                  <ListItemButton component={Link} to={item.link}>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.text} />
                   </ListItemButton>

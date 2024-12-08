@@ -64,25 +64,33 @@ h3 {
   background-color: rgb(234, 234, 234);
 }
 /* NAVBAR CSS STYLING */
-nav{
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 90px; 
+  min-height: 90px;
   padding-left: 1rem;
   background-color: #480303;
 }
+
 .navbar-menu-container {
   display: none;
 }
+
+.navbar-links-container {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-links-container a {
   margin-right: 2rem;
   text-decoration: none;
-  color: white; /* Change text color to white */
+  color: white;
   font-size: 1.2rem;
   font-weight: 600;
   font-family: 'Montserrat-Bold';
 }
+
 .primary-button {
   padding: 0.8rem 2.5rem;
   background-color: white;
@@ -93,21 +101,23 @@ nav{
   cursor: pointer;
   font-weight: 600;
   transition: 0.2s;
-  color: black; /* Set button text color to black */
+  color: black;
   margin-right: 1rem;
-  font-family: 'Montserrat-Bold'
-
+  font-family: 'Montserrat-Bold';
 }
+
 .navbar-cart-icon {
   font-size: 1.15rem;
-  color: white; /* Ensure icon color is white */
+  color: white;
 }
-.nav-logo-container{
+
+.nav-logo-container {
   font-family: 'Horizon';
   color: white;
   font-size: 2rem;
   padding-left: 1rem;
 }
+
 .primary-button:hover {
   background-color: rgb(192, 190, 190);
 }
@@ -115,8 +125,39 @@ nav{
 .navbar-menu-container svg {
   font-size: 1.5rem;
   cursor: pointer;
-  color: white; /* Ensure icon color is white */
+  color: white;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 800px) {
+  .nav-logo-container {
+    max-width: 140px;
+  }
+  
+  .navbar-links-container {
+    display: none;
+  }
+  
+  .navbar-menu-container {
+    display: flex;
+  }
+}
+
+@media (max-width: 1000px) {
+  .navbar-links-container a {
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+  
+  .primary-button {
+    font-size: 1rem;
+  }
+  
+  .home-banner-image-container {
+    max-width: 600px;
+  }
+}
+
 
 /* HOME SECTION CSS */
 .home-banner-container {
@@ -445,11 +486,7 @@ nav{
 }
 
 @media (max-width: 1000px) {
-  .navbar-links-container a {
-    margin-right: 1rem;
-    font-size: 1rem;
-  }
-
+  
   .primary-button {
     font-size: 1rem;
   }
@@ -460,17 +497,7 @@ nav{
 }
 
 @media (max-width: 800px) {
-  .nav-logo-container {
-    max-width: 140px;
-  }
-
-  .navbar-links-container {
-    display: none;
-  }
-
-  .navbar-menu-container {
-    display: flex;
-  }
+  
 
   .home-bannerImage-container {
     max-width: 450px;
